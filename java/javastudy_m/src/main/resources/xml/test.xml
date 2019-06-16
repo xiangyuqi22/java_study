@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<tips key="tip1" value="这是第一个提示信息" />
+	<tips key="tip2" value="这是第二个提示信息" />
+	<tips key="tip3" value="这是第三个提示信息" />
+	<tips key="tip4" value="这是第四个提示信息" />
+	<tips key="tip5" value="这是第五个提示信息" />
+</root>

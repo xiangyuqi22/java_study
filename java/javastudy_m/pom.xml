@@ -1,0 +1,147 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>javastudy_m</groupId>
+	<artifactId>javastudy_m</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
+		<!-- <dependency> <groupId>com.github.kunkun26</groupId> <artifactId>jna</artifactId> 
+			<version>4.5.1</version> </dependency> <dependency> <groupId>com.github.kunkun26</groupId> 
+			<artifactId>jna</artifactId> <version>4.5.1</version> <classifier>sources</classifier> 
+			<type>java-source</type> </dependency> -->
+
+		<dependency>
+			<groupId>uk.co.caprica</groupId>
+			<artifactId>vlcj</artifactId>
+			<version>3.11.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.buschmais.jqassistant.plugin</groupId>
+			<artifactId>yaml</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
+
+
+		<!-- 日志 -->
+		<!-- <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> 
+			<version>1.2.17</version> </dependency> <dependency> <groupId>commons-logging</groupId> 
+			<artifactId>commons-logging</artifactId> <version>1.2</version> </dependency> -->
+		 <dependency>
+              <groupId>org.slf4j</groupId>
+              <artifactId>slf4j-api</artifactId>
+              <version>1.7.5</version>
+            </dependency>
+        
+            <dependency>
+              <groupId>org.slf4j</groupId>
+              <artifactId>slf4j-log4j12</artifactId>
+              <version>1.7.12</version>
+            </dependency>
+        
+            <dependency>
+              <groupId>log4j</groupId>
+              <artifactId>log4j</artifactId>
+              <version>1.2.17</version>
+            </dependency>
+
+
+		<!-- bean操作 -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.2</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.6</version>
+		</dependency>
+
+		<!-- -->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<!-- fileutils -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+
+		<!-- excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>4.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>jfree</groupId>
+			<artifactId>jfreechart</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jxls/jxls -->
+		<!-- <dependency> <groupId>org.jxls</groupId> <artifactId>jxls</artifactId> 
+			<version>2.4.0</version> </dependency> <dependency> <groupId>org.jxls</groupId> 
+			<artifactId>jxls-poi</artifactId> <version>1.2.0</version> </dependency> 
+			<dependency> <groupId>org.jxls</groupId> <artifactId>jxls-jexcel</artifactId> 
+			<version>1.0.9</version> </dependency> -->
+		<dependency>
+			<groupId>org.jxls</groupId>
+			<artifactId>jxls</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jxls</groupId>
+			<artifactId>jxls-poi</artifactId>
+			<version>1.0.9</version>
+		</dependency>
+
+		<!-- alibaba excel -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>easyexcel</artifactId>
+			<version>1.1.2-beta5</version>
+		</dependency>
+
+		<!--<dependency> <groupId>com.alibaba</groupId> <artifactId>easyexcel</artifactId> 
+			<version>1.1.1</version> </dependency> -->
+
+
+		<!-- <dependency> <groupId>org.bytedeco</groupId> <artifactId>javacv-platform</artifactId> 
+			<version>1.4.4</version> </dependency> -->
+		<!-- <dependency> <groupId>org.bytedeco</groupId> <artifactId>javacv</artifactId> 
+			<version>1.4.1</version> </dependency> -->
+		<!-- <dependency> <groupId>org.bytedeco</groupId> <artifactId>javacpp</artifactId> 
+			<version>1.4.2</version> </dependency> <dependency> <groupId>com.spikeify</groupId> 
+			<artifactId>ffmpeg</artifactId> <version>0.7.3</version> </dependency> <dependency> 
+			<groupId>com.github.hoary.ffmpeg</groupId> <artifactId>FFmpeg-windows-x86_64</artifactId> 
+			<version>2.0.1.1</version> </dependency> <dependency> <groupId>com.intel.analytics.bigdl.core.native.opencv</groupId> 
+			<artifactId>opencv-java-win64</artifactId> <version>0.7.1</version> </dependency> 
+			<dependency> <groupId>ch.zhaw</groupId> <artifactId>opencv</artifactId> <version>3.2.0</version> 
+			<classifier>sources</classifier> <type>java-source</type> </dependency> -->
+
+
+	</dependencies>
+
+</project>
