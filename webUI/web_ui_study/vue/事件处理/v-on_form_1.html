@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		
+		<style type="text/css">
+			div {
+				margin-left: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<h3>
+			<a href="https://cn.vuejs.org/v2/guide/events.html#事件修饰符" target="_blank"> 学习地址 </a>
+		</h3>
+		
+		<h3>
+			v-on:click.prevent.self  : 阻止自身的点击，冒泡继续执行
+		</h3>
+		
+		<div id="app">
+			
+			<!-- 阻止单击事件继续传播 -->
+			<a href="http://www.baidu.com" target="_blank" v-on:click.stop="doStop($event)"> 打开百度</a>
+			
+			<!-- 提交事件不再重载页面 -->
+			<form  v-on:submit.prevent="">
+				<input ref='u' />
+				<input type="submit" value="提交"/>
+			</form>
+			
+			<hr />
+			<h3>阻止冒泡事件</h3>
+			<div v-on:click="fourth" id="div1">
+				<button>fourth</button>
+				<div v-on:click.capture="third">
+					<button>third</button>
+					<div v-on:click.self.prevent="second">
+						<button>second</button>
+						<div>
+							<button v-on:click="first">first</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<hr />
+			<h2>一次有效点击</h2>
+			<button v-on:click.once="good" >{{message}}</button>
+			
+			<hr />
+			<h2>Vue 还对应 addEventListener 中的 passive 选项提供了 .passive 修饰符。</h2>
+			<div id="div2" v-on:scroll.passive="onScroll" style="width: 800px;height: 500px; background: #FFE4E1;">
+				
+			</div>
+			
+			
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				message : "点赞"
+			},
+			methods : {
+				onSubmit : function(){
+					console.log("提交事件不再重载页面");
+					console.log(this.$refs['u']['value']);
+				},
+				doStop : function(event){
+					var bool = confirm("您确定要打开百度吗？");
+					bool ? "" : event.preventDefault() ;
+					
+				},
+				first : function(){
+					console.log("first");
+				},
+				second : function(){
+					console.log("second");
+				},
+				third : function(){
+					console.log("third");
+				},
+				fourth : function(){
+					console.log("fourth");
+				},
+				good : function(){
+					console.log("已点击")
+					this.message = "已赞";
+				},
+				onScroll : function(){
+					console.log("滚动监听");
+				}
+				
+			},
+			
+		})
+//		document.addEventListener('scroll',function(event){
+//			console.log(event);
+//			console.log("滚动时触发");
+//		})
+	</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h3>
+			<a href="https://cn.vuejs.org/v2/guide/forms.html#值绑定" target="_blank">学习地址</a>
+		</h3>
+		<div id="app">
+			
+			<p>
+				<label for="">选择框的选项</label>
+				<select name="" v-model="dynasty">
+					<option value="" v-for="d in dynasties" v-bind:value="d">
+						{{d.value}}
+					</option>
+				</select>
+			</p>
+			<h3>{{dynasty}}</h3>
+			
+			
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		var dynasties = [
+			{id : 1 , name : "song" , value : "宋朝",},
+			{id : 2 , name : "tang" , value : "唐朝",},
+			{id : 3 , name : "yuan" , value : "元朝",},
+		];
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				dynasties : dynasties,
+				dynasty : ""
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

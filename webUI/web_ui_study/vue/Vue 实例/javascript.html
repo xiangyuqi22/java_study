@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>javascript 嵌入</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>{{ num + 1 }}</h2>
+			<h2>{{ isOk ? ok : no }}</h2>
+			<h3>{{ eng.split(",")[1].toUpperCase() }}</h3>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : "#app" ,
+			data : {
+				num : 11,
+				isOk : true,
+				ok : "是" , 
+				no : "否" , 
+				eng : "this is english , my english"
+			}
+		})
+	</script>
+</html>

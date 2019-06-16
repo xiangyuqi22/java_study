@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h2 v-if="show">
+				根据条件显示 v-if
+			</h2>
+			
+			<h2>
+				<span v-if=" num === 1 "> num的值是1</span>
+				<span v-else-if=" num === 2 "> num的值是2</span>
+				<span v-else-if=" num === 3 "> num的值是3 </span>
+				<span v-else="">num的值等于{{num}}</span>
+			</h2>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				show : true ,
+				num : 2
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用methods过滤数据</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+		<style type="text/css">
+			.red{
+				color:red;
+			}
+			.yellow{
+				background: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h2 v-for="(user , index) in getUsers()" v-bind:class="{ red : user.id%2 == 0 , yellow : setBackground(user) }">
+				{{index}} ---- {{user.id}} -- {{user.name}} -- {{user.username}} 
+				-- {{user.nickName}}  -- {{user.star}}
+			</h2>
+			<h1>
+				
+				原始数据量: {{ haohan.length  }} ; 过滤后的数据量：{{ getUsers().length }} ; 
+				一共过滤了 {{haohan.length - getUsers().length }} 条数据；
+				
+			</h1>
+			
+			<span v-for="number of 20 ">{{number}}  
+				<span v-if="number < 20">,</span>
+			</span>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				haohan : haohan
+			},
+			methods : {
+				getUsers : function(){
+					console.log("执行++")
+					return this.haohan.filter(function(item){
+						return item.username.indexOf('g') != -1;
+					})
+				},
+				setBackground :function(user){
+					console.log(user.id)
+					return true;
+				}
+				
+			},
+			computed : {
+//				users : function(){
+//					return this.haohan.filter(function(item){
+//						return item.id > 1 && item.id < 5;
+//					});
+//				}
+//				setBackground :function(user){
+//					console.log(user)
+//					return true;
+//				}
+			}
+		})
+	</script>
+</html>

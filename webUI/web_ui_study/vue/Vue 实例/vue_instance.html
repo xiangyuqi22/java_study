@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue 实例</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>{{name}}</p>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var data = {
+			name : ""
+		};
+		var vm  = new Vue({
+			el : "#app",
+			data : data
+		});
+		data.name = "宋江";
+		
+		/**
+		 * 数据变动时触发
+		 */
+		vm.$watch("name" , function(newData , oldData){
+			console.log(oldData);
+			console.log(newData);
+			if(newData == 1){
+				data.name = oldData;
+			}
+		});
+		
+	</script>
+</html>

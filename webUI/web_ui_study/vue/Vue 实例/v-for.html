@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			table , table td , table th{
+				border: 1px solid #008000;
+				border-collapse: collapse;
+			}
+			table td , table th {
+				width: 200px;
+				height:50px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<!-- v-for -->
+			<table>
+					<tr>
+					<th>id</th>
+					<th>name</th>
+					<th>age</th>
+					</tr>
+				<template v-for="person in persons">
+					<tr>
+						<td>{{person.id}}</td>
+						<td>{{person.name}}</td>
+						<td>{{person.age}}</td>
+					</tr>
+				</template>
+				
+				<tr>
+					<td colspan="3">-----------------------------</td>
+				</tr>
+				
+				<tr  v-for="person in persons">
+						<td>{{person.id}}</td>
+						<td>{{person.name}}</td>
+						<td>{{person.age}}</td>
+				</tr>
+					
+					
+			</table>
+			
+			
+			
+			
+		
+			<ul>
+				<li v-for="person in persons">
+						{{ person.name }}
+				</li>
+			</ul>
+		</div>
+	</body>
+	
+	
+	<script>
+		var persons =[
+					{
+						id:1,
+						name : "宋江",
+						age : 33
+					},{
+						id:2,
+						name : "卢俊义",
+						age : 34
+					},{
+						id:3,
+						name : "吴用",
+						age : 32
+					},{
+						id:4,
+						name : "公孙胜",
+						age : 36
+					}
+				];
+		var v = new Vue({
+			el : "#app",
+			data : {
+				persons:persons,
+			}
+		})
+	</script>
+	
+</html>

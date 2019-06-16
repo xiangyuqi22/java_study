@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://unpkg.com/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>我的名字是：{{ name }}</p>
+			<p>我要去: {{ location() }}</p>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		
+		
+		var data = {
+			name : "好好学习"
+		}
+		
+		var v = new Vue({
+			el:"#app",
+			data:data,
+			methods:{
+				location : function(){
+					return "西藏" + ";" + this.name;
+				},
+			}
+		});
+		
+		v.name = "学习";
+		
+		data.name = "好好学习";
+		
+		console.log(v.$el);
+		
+		console.log(v.$data)
+		
+		
+	</script>
+</html>

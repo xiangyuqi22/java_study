@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<v-model-component v-model="isSingle"></v-model-component>
+			
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('v-model-component' , {
+			model : {
+				prop : ['checked1','value1'],
+				event : ['change','changeValue']
+			},
+			template : ' <div>\
+				<label for="">是否单身</label> \
+				<input type="checkbox" \
+					v-on:change="$emit(\'change\',$event.target.checked)" \
+					v-bind:checked="checked1"/> \
+					<p>{{ checked1 ? "是" : "否"}}</p> \
+				<input type="text" v-bind:value="value1" \
+					v-on:changeValue="$emit(\'changeValue\',$event.target.value)"/>\
+				\
+					<input type="button" name="" id="" value="确认" /> \
+			</div>',
+			props :{
+				checked1 : Boolean,
+				value1 : ""
+			},
+		});
+		
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				isSingle : {
+					checked1 : true ,
+					value1 : ""
+				}
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#app{
+				width:500px;
+				height: 100px;
+				background: #008000;
+				color:#ffffff;
+				font-size: 20px;
+				text-align: center;
+				line-height: 100px;
+			}
+			#app strong{
+				color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<slot-component>请求异常</slot-component>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('slot-component',{
+			template : '\
+				<div>\
+					<strong>错误</strong> \
+					<slot></slot>\
+				</div>\
+			',
+		})
+		
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+
+			},
+			methods : {
+				
+			},
+			
+		})
+	</script>
+</html>

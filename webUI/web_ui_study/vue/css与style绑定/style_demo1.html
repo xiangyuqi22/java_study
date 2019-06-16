@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<h3>
+			学习记录：
+		</h3>
+		<h4>
+			CSS 属性名可以用驼峰式 (camelCase  fontSize) 或短横线分隔 (kebab-case，记得用引号括起来  'font-size' ) 来命名
+		</h4>
+		
+		<div id="app">
+			
+			<h1 v-bind:style="{ color:color, 'font-size':fontSize + 'px'} ">绑定style内联样式</h1>
+			
+			<hr />
+			
+			<h1 v-bind:style="styleObject">使用对象来绑定内联样式</h1>
+			
+			<hr />
+			
+			<h1 v-bind:style="computedStyle">绑定计算属性</h1>
+			
+			<hr />
+			
+			<h3>做一个练习，给定两个按钮（加 / 减）来控制字体的大小</h3>
+			
+			<button v-on:click="add(2)"> 字体变大</button>
+			<button v-on:click="subStract(3)">字体变小</button>
+			
+			<button v-on:mouseenter="add(2)" v-on:mousemove="add(2)"> 鼠标移入时触发</button>
+			
+			<div v-bind:style="changeSize"> 改变文字的大小 </div>
+			
+			
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var app  =  new Vue({
+			el : "#app" , 
+			data : {
+				color : "green" ,
+				fontSize : 30 , 
+				styleObject : {
+					color : "red" , 
+					background : "yellow"
+				},
+				size : 20,
+				changeSize : {
+					'font-size' : this.size + "px",
+					color : 'red',
+				},
+				
+			},
+			methods:{
+				add : function(a){
+					this.size += a;
+					this.changeSize['font-size'] = this.size + "px";
+//					this.size += a;
+//					this.changeSizeComputed = "";
+				},
+				subStract : function(b){
+					this.size -= b;
+					this.changeSize['font-size'] = this.size + "px";
+//					this.size -= b;
+//					this.changeSizeComputed = "";
+				}
+			},
+			computed : {
+//				changeSizeComputed : {
+//					get : function(){
+//						return this.changeSize;
+//					},
+//					set : function(){
+//						this.changeSize['font-size'] = this.size + "px";
+//					}
+//				},
+				computedStyle : {
+					get : function(){
+						return this.styleObject;
+					},
+					set : function(obj){
+						this.styleObject = obj;
+					}
+				}
+			}
+		})
+	</script>
+</html>

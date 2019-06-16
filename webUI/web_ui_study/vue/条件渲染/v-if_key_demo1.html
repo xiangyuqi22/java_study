@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> v-if   key </title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h3>
+			key='username-input'  用来表示两个input是完全独立的，不要利用它们
+		</h3>
+		<div id="app">
+			<template v-if="type == 'username'">
+				<label for="">用户名</label>
+				<input type="text" placeholder="请输入用户名" key='username-input' />
+			</template>
+			<template v-else="">
+				<label for="">邮箱</label>
+				<input type="text" placeholder="请输入邮箱" key='email-input'/>
+			</template>
+			<br />
+			<button v-on:click="toggle">切换</button>
+		</div>
+		
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				type : 'username'
+			},
+			methods : {
+				toggle : function(){
+					if(this.type == 'username'){
+						this.type = 'email';
+					}else{
+						this.type = 'username';
+					}
+				}
+			},
+			
+		})
+	</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<cpt v-if = "show"></cpt>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		var  myComponent = {
+			template : '<div>这是div模板</div>'
+		}
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				show : false
+			},
+			methods : {
+
+			},
+			components:{
+				'cpt' : myComponent
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<mycomponent
+				v-bind:index = "index"
+				v-bind:haohan="haohan"
+				v-on:change ="change"
+			></mycomponent>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('mycomponent',{
+			template : '\
+				<div>	\
+					<button v-on:click="$emit(\'change\', index)" >点击</button>	\
+					<h3 v-on:click="show">{{haohan[index]}}  -- {{count + index}}</h3> \
+				</div>  \
+			',
+			props : ['haohan','index'],
+			data : function(){
+				return {
+					count : 0
+				};
+			},
+			methods : {
+				show : function(){
+					this.count++ + this.index;
+				}
+			}
+			
+		})
+		
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				index : 0,
+				haohan : haohan
+			},
+			methods : {
+				change : function(index){
+					console.log(index);
+					this.index++;
+					if(this.index >= haohan.length){
+						this.index = 0;
+					}
+				}
+			},
+			
+		})
+	</script>
+</html>

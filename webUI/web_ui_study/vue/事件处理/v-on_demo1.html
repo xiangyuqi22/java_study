@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<h3>直接在标签中写执行逻辑</h3>
+			<button v-on:click="num++">
+				点击{{num}}
+			</button>
+			
+			<h3>在标签中写入要执行的方法</h3>
+			<button v-on:click="changeNum($event)">改变num的值为{{num}}</button>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				num : 0
+			},
+			methods : {
+				changeNum : function(event){
+//					console.log(event);
+					this.num++;
+//					console.log(readXPath(event.path[0]))
+				}
+			},
+			
+		})
+		
+		document.addEventListener("click", function(event){
+//			console.log(readXPath(event.path[0]));
+			deal(event,'click');
+		});
+		
+		document.addEventListener("contextmenu", function(event){
+//			console.log(readXPath(event.path[0]));
+			deal(event,'contextmenu')
+		});
+		
+		document.addEventListener("dblclick", function(event){
+//			console.log(readXPath(event.path[0]));
+			deal(event,'dblclick')
+		});
+		
+		document.addEventListener("copy", function(event){
+//			console.log(readXPath(event.path[0]));
+			deal(event,'copy')
+		});
+		
+		
+		function deal(event,type){
+			if('click' == type){
+				console.log('执行了点击鼠标事件');
+			}else if('contextmenu' == type){
+				console.log('执行了右键鼠标事件');
+			}else if('dblclick' == type){
+				console.log('执行了双击鼠标事件');
+			}else if('copy' == type){
+				console.log(' 拷贝数据时触发');
+			}
+			console.log(readXPath(event.path[0]));
+			console.log(event);
+		}
+
+
+		function readXPath(element) {
+			
+		    if (element.id !== "" && typeof(element.id) != 'undefined') {//判断id属性，如果这个元素有id，则显 示//*[@id="xPath"]  形式内容
+		        return '//*[@id=\"' + element.id + '\"]';
+		    }
+		    //这里需要需要主要字符串转译问题，可参考js 动态生成html时字符串和变量转译（注意引号的作用）
+		    if (element == document.body) {//递归到body处，结束递归
+		        return '/html/' + element.tagName.toLowerCase();
+		    }
+		    var ix =1;//在nodelist中的位置，且每次点击初始化
+//		    var siblings = [];
+		    if(element.parentNode != null){
+		    	 siblings = element.parentNode.childNodes;//同级的子元素
+		    }else{
+		    	return "";
+		    }
+		    
+		        
+		    for (var i = 0, l = siblings.length; i < l; i++) {
+		        var sibling = siblings[i];
+		        //如果这个元素是siblings数组中的元素，则执行递归操作
+		        if (sibling == element) {
+		            return arguments.callee(element.parentNode) + '/' + element.tagName.toLowerCase() + '[' + (ix) + ']';
+		            //如果不符合，判断是否是element元素，并且是否是相同元素，如果是相同的就开始累加
+		        } else if (sibling.nodeType == 1 && sibling.tagName == element.tagName) {
+		            ix++;
+		        }
+		    }
+		};
+	</script>
+</html>

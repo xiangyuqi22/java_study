@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>表单</title>
+		<link rel="stylesheet" href="css/element_ui.css" />
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			
+			<h3>查询条件</h3>
+			
+			<el-form ref="form" :inline="true" :model="form" label-width="80px">
+				<el-form-item label="姓名：">
+					<el-input v-model="form.name"></el-input>
+				</el-form-item>
+				<el-form-item label="性别：">
+					<catt-radio v-bind:sex="sex" v-bind:radio="form.gender" ></catt-radio>
+				</el-form-item>
+				<el-form-item label="部门" >
+			    <el-select  placeholder="请选择部门" v-model="form.dept">
+			      <el-option v-for="(dept,index) in depts" :label="dept" :value="dept" :key="index"></el-option>
+			    </el-select>
+			  </el-form-item>
+			  <el-form-item label="入职时间" >
+			    <el-date-picker
+			      v-model="form.date"
+			      type="daterange"
+			      start-placeholder="入职日期"
+			      end-placeholder="离职日期"
+			      default-value="2019-10-01">
+			    </el-date-picker>
+			  </el-form-item>
+			</el-form>
+			
+			<div class="buttons">
+				<el-button icon="el-icon-search" type="primary" @click="search">查询</el-button>
+				<el-button icon="el-icon-circle-plus-outline" type="success" @click="add">新增</el-button>
+				<el-button icon="el-icon-edit" type="info" @click="edit">修改</el-button>
+				<el-button icon="el-icon-delete" type="danger" @click="deleteData">删除</el-button>
+				<el-button icon="el-icon-search" type="primary" @click="see">查看详情</el-button>
+			</div>
+			
+			<div>
+				
+			</div>
+			
+			<div>
+				<el-table
+				    ref="multipleTable"
+				    :data="tableData"
+				    tooltip-effect="dark"
+				    style="width: 100%"
+				   >
+				    <el-table-column
+				      type="selection"
+				      width="55" label="序号" prop="id">
+				    </el-table-column>
+				    <el-table-column
+				      label="姓名"
+				      prop="name"
+				      width="120">
+				    </el-table-column>
+				    <el-table-column
+				      prop="gender"
+				      label="性别"
+				      width="120">
+				    </el-table-column>
+				    <el-table-column
+				      prop="username"
+				      label="账号"
+				      width="200"
+				      show-overflow-tooltip>
+				    </el-table-column>
+				    <el-table-column
+				      prop="dept"
+				      label="部门"
+				      show-overflow-tooltip>
+				    </el-table-column>
+				    <el-table-column
+				      prop="date"
+				      label="入职时间"
+				      show-overflow-tooltip>
+				      <template slot-scope="scope">{{ scope.row.date }}</template>
+				    </el-table-column>
+				  </el-table>
+			</div>
+			<div>
+				 <el-pagination
+				      @size-change="handleSizeChange"
+				      @current-change="handleCurrentChange"
+				      :current-page="currentPage"
+				      :page-sizes="[100, 200, 300, 400]"
+				      :page-size="100"
+				      layout="total, sizes, prev, pager, next, jumper"
+				      :total="total">
+				    </el-pagination>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/element_ui.js"></script>
+	<script type="text/javascript" src="js/my_el_radio.js"></script>
+	<script type="text/javascript" src="js/my__vue.js"></script>
+
+	<script type="text/javascript">
+		
+	</script>
+
+</html>

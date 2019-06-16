@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生命周期钩子</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var vm  = new Vue({
+			el : '#app' , 
+			created : function(){
+				console.log("实例创建成功时执行");
+			},
+			beforeCreate : function(){
+				console.log("实例创建前执行");
+			}
+		})
+	</script>
+</html>

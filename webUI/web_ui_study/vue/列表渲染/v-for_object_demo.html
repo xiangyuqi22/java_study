@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>遍历object列表，遍历一个对象</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<h3 v-for="(value , key , index) in obj" v-bind:key="obj.key">
+				{{index}} --- {{key}} -- {{value}} 
+			</h3>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				obj : songjiang
+			},
+		})
+		
+		//为对象新增一个属性
+		//方法一
+//		app.$set(app.$data.obj, 'result', '被皇帝毒死'); 
+
+		//方法二
+//		Vue.set(app.$data.obj, 'result', '被皇帝毒死');
+
+		//方法三
+//		Object.assign(app.$data.obj , {
+//			'result' : '被皇帝毒死',
+//			'age' : '49'
+//		})
+		
+		app.$data.obj = Object.assign({},songjiang,{
+			'result' : '被皇帝毒死',
+			'age' : '49'
+		})
+		
+	</script>
+</html>

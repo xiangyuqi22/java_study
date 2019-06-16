@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../js/my.js" ></script>
+	</head>
+	<body>
+		<h3>
+			<a href="https://cn.vuejs.org/v2/guide/forms.html">学习地址</a>
+		</h3>
+		<div id="app">
+			<form action="" method="post">
+				<p>
+					<label for="">用户名：</label>
+					<input type="" name="" id="" value="" v-model="username"/>
+				</p>
+				<p>
+					<label for="">性别：</label>
+					<label for="">男</label><input type="radio" name="sex" id="" value="男" v-model="sex"/>
+					<label for="">女</label><input type="radio" name="sex" id="" value="女" v-model="sex"/>
+				</p>
+				
+				<p>
+					<label for="">爱好</label>
+						<label for="">编程</label>
+						<input type="checkbox" name="fav" id="" value="编程" v-model="fav" />
+						<label for="">看书</label>
+						<input type="checkbox" name="fav" id="" value="看书" v-model="fav" />
+						<label for="">看电影</label>
+						<input type="checkbox" name="fav" id="" value="看电影" v-model="fav" />
+				</p>
+				
+				<p>
+					<label for="">朝代</label>
+					<select name="" v-model="dynasty">
+						<option disabled="" value="未选择">未选择</option>
+						<option value="唐朝">唐朝</option>
+						<option value="宋朝">宋朝</option>
+						<option value="yuan">元朝</option>
+						<option value="明朝">明朝</option>
+						<option value="清朝">清朝</option>
+					</select>
+				</p>
+				
+				<div >
+					<select name="" v-model="type" multiple >
+						<option value="诗人">诗人</option>
+						<option value="词人">词人</option>
+						<option value="散文大家">散文大家</option>
+					</select>
+				</div>
+				
+				<h3>用 v-for 渲染的动态选项</h3>
+				<p>
+					<select name="" v-model="works">
+						<option v-for="option in options1" v-bind:value="option.id"> {{option.value}}</option>
+					</select>
+				</p>
+				<input type="submit" value="提交"/>
+			</form>
+			<h3>用户名：{{username}}</h3>
+			<h3>性别：{{sex}}</h3>
+			<h3>爱好：{{fav}}</h3>
+			<h3>朝代：{{dynasty}}</h3>
+			<h3>类型：{{type}}</h3>
+			<h3>作品：{{showWorks()}}</h3>
+		</div>
+	</body>
+	<script  type="text/javascript">
+	
+		var app = new Vue({
+			el : "#app",
+			data : {
+				username : "" ,
+				sex : "男" ,
+				fav : [] ,
+				dynasty : "未选择" ,
+				type : [] ,
+				works : " " ,
+				options1 : []
+			},
+			methods : {
+				showWorks : function(){
+					var obj = {
+						1 : "李白：蜀道难",
+						2 : "白居易：琵琶行",
+						3 : "李白：静夜思",
+						4 : "苏东坡：水调歌头",
+					}
+					return obj[this.works];
+				}
+			},
+			computed : {
+				
+			},
+			created : function(){
+				//渲染完成之后处理
+				options =  [
+						{id : 1 , value : "蜀道难"},
+						{id : 2 , value : "琵琶行"},
+						{id : 3 , value : "静夜思"},
+						{id : 4 , value : "水调歌头"},
+					];
+				this.works = options[1]['id'];
+				this.options1 = options;
+			}
+			
+		})
+		
+	</script>
+</html>

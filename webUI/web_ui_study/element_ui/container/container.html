@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title> </title>
+		<link rel="stylesheet" href="../css/element_ui.css" />
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/element_ui.js"></script>
+		<style type="text/css">
+			body{
+				font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+			}
+			.el-container{
+				width: 100%;
+			}
+			.el-header{
+				background: lightblue;
+			}
+			.el-aside{
+				background: lightgreen;
+			}
+			.el-main{
+				background: lightsalmon;
+				height: 200px;
+			}
+			.el-footer{
+				background: lightslategrey;
+			}
+			
+			body > div > .el-container{
+				margin-bottom: 50px;
+			}
+			
+			#app > .el-container > .el-header > .el-button{
+				margin-top: 30px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			
+			<el-container>
+				<el-header height="100px">
+					
+					<el-button>
+						<i class="el-icon-location"></i>
+						顶部
+					</el-button>
+					
+					<el-button round type='success'>
+						顶部2
+					</el-button>
+					
+					<el-button type="warning" icon="el-icon-search">
+						带图标的按钮
+					</el-button>
+					
+				</el-header>
+				
+				<el-container>
+					<el-aside width="200px">
+						<i class="el-icon-edit"></i> 
+						<el-button type="text" >侧边</el-button>
+						
+					</el-aside>
+					<el-main>主容器</el-main>
+				</el-container>
+				
+				<el-footer height = "100px">底部容器</el-footer>
+			</el-container>
+			
+			
+			<el-container>
+				<el-aside>
+					侧边
+				</el-aside>
+				<el-container>
+					<el-header>顶部</el-header>
+					<el-main>中间</el-main>
+					<el-footer>底部</el-footer>
+				</el-container>
+			</el-container>
+			
+			<el-container>
+				<el-header>顶部</el-header>
+				<el-container>
+					<el-aside>左侧</el-aside>
+					<el-container>
+						<el-main>中间</el-main>
+						<el-footer>底部</el-footer>
+					</el-container>
+				</el-container>
+			</el-container>
+
+		</div>
+		
+	</body>
+
+	<script type="text/javascript">
+		new Vue({
+			el: "#app",
+			data: function() {
+				return {
+					
+				}
+			}
+		})
+	</script>
+
+</html>

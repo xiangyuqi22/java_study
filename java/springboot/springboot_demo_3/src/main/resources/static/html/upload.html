@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title> </title>
+		<link rel="stylesheet" href="../css/element/element_ui.css" />
+		<script type="text/javascript" src="../js/vue/vue.js" ></script>
+		<script type="text/javascript" src="../js/element/element_ui.js" ></script>
+		<style type="text/css">
+			
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			<el-upload
+			  class="upload-demo"
+			  action="/file/upload"
+			  :on-preview="handlePreview"
+			  :on-remove="handleRemove"
+			  :file-list="fileList"
+			  list-type="picture">
+			  <el-button size="small" type="primary">点击上传</el-button>
+			  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb --- </div>
+			</el-upload>
+		</div>
+		
+	</body>
+
+	<script type="text/javascript">
+		var vue  = new Vue({
+			el: "#app",
+			data: function() {
+				return {
+					fileList : []
+				}
+			},
+			methods: {
+		      handleRemove(file, fileList) {
+		        console.log(file, fileList);
+		      },
+		      handlePreview(file) {
+		        console.log(file);
+		      }
+		    }
+		})
+	</script>
+
+</html>

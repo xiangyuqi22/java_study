@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>按键修饰符</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<h2>
+			<a href="https://cn.vuejs.org/v2/guide/events.html#按键修饰符"  target="_blank">学习地址>></a>
+		</h2>
+		
+		<div id="app">
+			<form action="" method="post" v-on:click.prevent="submit">
+				<input type="" name="" id="" value="" ref="name" v-on:click.stop />
+				<input type="submit" value="提交" v-on:keyup="submit"/>
+			</form>
+			<h2>{{result}}</h2>
+			
+			<h2>demo2</h2>
+			<input type="text" v-on:keyup.enter='submit'/>
+			
+			<h2>鼠标按键</h2>
+			<div
+				style="width: 200px; height: 200px ; 
+				background: #FFA500; 
+				text-align: center; 
+				line-height: 200px;"
+				v-on:click.left="leftKey"
+				v-on:click.middle="middleKey"
+				v-on:click.right="rightKey"
+				
+				>
+				
+				<p style="margin:auto 0">当前按下的键为:{{mouseKey}}</p>
+				
+				</div>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				result : "",
+				mouseKey : "" ,
+			},
+			methods : {
+				submit : function(obj){
+					console.log(obj);
+					this.result = this.$refs.name.value;
+				},
+				leftKey : function(){
+					console.log("鼠标左键")
+					this.mouseKey = '鼠标左键';
+				},
+				middleKey : function(){
+					this.mouseKey = "鼠标中间键";
+				},
+				rightKey : function(event){
+					this.mouseKey = "鼠标右键 ";
+					event.preventDefault();
+				}
+			},
+			
+		})
+	</script>
+</html>

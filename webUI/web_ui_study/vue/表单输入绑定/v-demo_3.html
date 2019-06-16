@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h3>v-model.lazy  非实时响应，change后才响应</h3>
+		<div id="app">
+			<input type="text" v-model.lazy.trim="lazy"/><label for="">{{lazy}}</label>
+			<br /><br />
+			<input v-model.number='age' type="number" /> <label for="">{{age}}</label>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				lazy : "" ,
+				age : ""
+			},
+			methods : {
+				
+			},
+		})
+	</script>
+</html>

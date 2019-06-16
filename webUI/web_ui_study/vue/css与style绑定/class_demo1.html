@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> class动态绑定</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.red{
+				color:red;
+			}
+			.green{
+				color : green;
+			}
+			.bgYellow{
+				background: yellow;
+				text-align: center;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h1 v-bind:class="{ red : isRed , green : isGreen , bgYellow : isBgYellow }">vue学习</h1>
+			<h2 v-bind:class="objectClass2">使用object绑定class</h2>
+			<hr />
+			<h2 v-bind:class="[array_class.class_a,array_class.class_b]">数组语法{{origin_html}}</h2>
+			<hr />
+			<h2 v-bind:class="[isRed ? array_class.class_a : '',
+				 isBgYellow ? array_class.class_b : '']">使用三元表达式 v-bind:class="[isRed ? array_class.class_a : '',
+				 isBgYellow ? array_class.class_b : '']"</h2>
+			<hr	 />
+			<h2 v-bind:class="[{green : true} , array_class.class_b]">多语法组合使用  v-bind:class="[{green : true} , array_class.class_b]"</h2>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var isGreen = true;
+		var vm = new Vue({
+			el : "#app" , 
+			data : {
+				isRed : true , 
+				isGreen : false , 
+				isBgYellow : false ,
+				objectClass : {
+					green : isGreen,
+					bgYellow : true,
+				},
+				origin_html : 'v-bind:class="[red,bgYellow]"',
+				array_class : {
+					class_a : "red",
+					class_b : "bgYellow",
+				}
+			},
+			computed : {
+				objectClass2 : {
+					get : function(){
+						return this.objectClass;
+					},
+					set : function(obj){
+						console.log("执行set")
+						this.objectClass = obj;
+					}
+				}
+			}
+			
+		})
+	</script>
+</html>

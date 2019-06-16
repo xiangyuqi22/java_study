@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title> v-on</title>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<p>{{ showMessage() }}</p>
+			
+			<button v-on:click="showMessage" > {{ showMessage() }}</button>
+			
+		</div>
+	</body>
+	<script>
+		var app = new Vue({
+			el : "#app",
+			data:{
+				message : "我知道那个人不会再来，但我还是在等"
+			},
+			methods : {
+				showMessage : function(){
+//					this.message = this.message +  new Date().toLocaleDateString();
+					console.log("执行了一次");
+					var message = this.message + new Date().toLocaleTimeString();
+					return message;
+				},
+			}
+		});
+		
+	</script>
+</html>

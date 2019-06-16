@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>HELLO WORLD</title>
+		<link rel="stylesheet" href="../css/element_ui.css" />
+
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<script type="text/javascript" src="../js/element_ui.js"></script>
+
+	</head>
+
+	<body>
+
+		<div id="app">
+			
+			<br />
+			<el-button @click="show(true)" type="primary" :loading="load"> {{button_text}}</el-button>
+
+			<el-dialog :visible.sync="visible" title="Hello world">
+				<p>我知道那个人不会再来</p>
+				<p>但我还是在等</p>
+				<p>我在门口坐了两天两夜</p>
+				<p>看着天空在不断的变化 </p>
+				<p>我才发现</p>
+				<p>来到这里这么久</p>
+				<p>却从来没有看清楚这片天空</p>
+				
+				<el-button @click="show(false)">
+					<i class="el-icon-star-off"></i>
+					取消
+				</el-button>
+			</el-dialog>
+
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		new Vue({
+			el: "#app",
+			data: function() {
+				return {
+					visible: false,
+					load : false,
+					button_text : "打开"
+				}
+			},
+			methods : {
+				show : function(bool){
+					this.visible = bool;
+					this.load = bool;
+					if(bool){
+						this.button_text = '关闭';
+					}else{
+						this.button_text = '打开';
+					}
+				},
+			}
+		})
+	</script>
+
+</html>

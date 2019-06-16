@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			请选择:<basic-checkbox 
+					v-model="lovingVue"
+					v-on:show="show"
+					></basic-checkbox>
+			<h3>{{lovingVue}}</h3>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		Vue.component('basic-checkbox',{
+			model : {
+				prop : 'checked',
+				event : 'change'
+			},
+			props : {
+				checked : Boolean
+			},
+			template : ' \
+				<div> \
+					<input type="checkbox" v-bind:checked="checked" \
+					v-on:change="$emit(\'change\',$event.target.checked)" /> \
+					<p v-on:click="$emit(\'show\',$event)">{{checked}}</p>  \
+				</div> \
+			'
+		});
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				lovingVue : true
+			},
+			methods : {
+				show : function(event){
+					console.log(event);
+					this.lovingVue = !this.lovingVue;
+				}
+			},
+			
+		})
+	</script>
+</html>

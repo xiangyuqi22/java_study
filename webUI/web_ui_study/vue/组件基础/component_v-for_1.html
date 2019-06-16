@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<mycomponent v-for="(user,index) in haohan" 
+				:user="user" 
+				:key = "index" 
+				:index="index"></mycomponent>
+			
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('mycomponent',{
+			template : "<div>{{user.name}} ---  {{user.nickName}} ------ {{haohan[index].name}}</div>",
+			props : ['user','index'],
+			data : function(){
+				return {
+					haohan : haohan
+				};
+			}
+		})
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				haohan : haohan
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

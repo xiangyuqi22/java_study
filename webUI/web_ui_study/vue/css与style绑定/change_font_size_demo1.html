@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#panel{
+				background: mistyrose;
+				width: 800px;
+				height:100px;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<h2>
+			做一个练习
+		</h2>
+		<h3>
+			有一个面板，鼠标在面板上按住 由左往右滑动时，字体变大，由右往左滑动时，字体变小
+		</h3>
+		
+		<hr />
+		
+		
+		<div id="app">
+			
+			
+			
+			<div id = "panel" v-on:mousemove="change($event)" v-on:mousedown="down($event)" v-on:mouseup="up()">
+				<div style="width: 0px; background:green; height: 100%;" v-bind:style="setWidth"></div>
+			</div>
+			
+			<div v-bind:style="changeSize">这里是要改变的字体，鼠标位置： {{x}}</div>
+				
+			
+		
+		
+		</div>
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				changeSize : {
+					fontSize : this.size + 'px'
+				},
+				doWidth : false,
+				s : 0 , 
+				setWidth : {
+					width : "0px"
+				},
+				x : 0
+			},
+			methods : {
+				change : function(event){
+					this.x = event.x;
+					if( this.doWidth ){
+						this.setWidth.width = this.x + "px";
+						this.changeSize['font-size'] = (this.x / 10) + "px";
+					}
+				},
+				down : function(){
+					this.doWidth = true;
+				},
+				up : function(){
+					this.doWidth = false;
+				}
+			}
+		})
+	</script>
+</html>

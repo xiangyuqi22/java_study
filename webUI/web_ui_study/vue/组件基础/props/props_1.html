@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+		<script type="text/javascript" src="../../data/jsonData.js" ></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<prop-component 
+					v-bind:data = "showData()" 
+					v-bind:haohan = "haohan1"
+					v-bind:songjiang="sj()[1]"
+					></prop-component>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('prop-component',{
+				template : '<div>\
+					{{data}} <br />\
+					{{ haohan[0].name}} <br /> \
+					{{songjiang}} <br /> \
+					</div>',
+				props:{
+				'data' : {
+					type:String,
+					required:false
+				},
+				'haohan' : Array , 
+				'songjiang' : Object
+			},
+		})
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+//				showData : "数据显示"
+				haohan1 : haohan ,
+			},
+			methods : {
+				showData : function(){
+					return "数据显示";
+				},
+				sj : function(){
+					return this.haohan1;
+				}
+			},
+			
+		})
+	</script>
+</html>

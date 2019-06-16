@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>计算属性</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h1>显示原始信息:{{message}}</h1>
+			<h2>显示处理后的信息：{{message2}}</h2>
+			<h3>使用方法显示:{{methodd()}}</h3>
+			
+			<hr />
+			
+			<h1>{{fullname}}</h1>
+			<h2>{{methodd2()}}</h2>
+			
+			<hr />
+			<h1>{{fullname2}}</h1>
+			
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		
+		var vm = new Vue({
+			el : "#app",
+			data : {
+				message : "hello world",
+				name : "li bai",
+				firstname : "li" , 
+				lastname : "bai",
+//				fullname : ""
+			},
+			/*computed 的数据是双向绑定的 ，只要message的数据有变动，这里的数据也会变动
+			 如果是需要经常直接调用：使用 computed 因为它是基于缓存的 
+			 可以通过 vm.message2  获取值 
+			 computed  只要有一个值变动，methods里面的方法都会执行
+			 如果是使用methods的话 
+			 需要通过vm.methodd()来获取值 ，会执行一次该方法，这会降低性能
+			 
+			 
+			 * */
+			computed : {
+				message2 : function(){
+					console.log("执行computed");
+//					this.name = "bai ju yi";
+					var name  = this.name;
+					return this.message.toUpperCase() + name;
+				},
+				fullname : function(){
+					return this.firstname + "  " +  this.lastname;
+				},
+				fullname2 : {
+					get : function(){
+						return this.firstname + "  " +  this.lastname;
+					},
+					set : function(newName){
+						this.firstname = newName.split(" ")[0];
+						this.lastname = newName.split(" ")[1];
+					}
+					
+				}
+			},
+			methods : {
+				methodd : function(){
+					console.log("执行methods")
+					return this.message.toUpperCase();
+				},
+				methodd2 : function(){
+					console.log("执行methodd2");
+					return this.name;
+				}
+				
+			},
+//			watch : {
+//				firstname : function(val){
+//					this.fullname = val + this.lastname;
+//				},
+//				lastname : function(val){
+//					this.fullname = this.lastname + val;
+//				}
+//			}
+		})
+		
+	</script>
+</html>

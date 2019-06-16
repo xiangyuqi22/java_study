@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+	</head>
+	<body>
+		
+		<div id="app">
+				<p>
+					<label for="">用ID：</label>
+					<input type="text" v-bind:value="user.id" ref/>
+				</p>
+				<p>
+					<label for="">用户姓名：</label>
+					<input type="text" v-bind:value="user.name"/>
+				</p>
+				<p>
+					
+				</p>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				user : songjiang
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

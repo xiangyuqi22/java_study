@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+
+<!--
+	v-bind:title ： 绑定提示信息
+	
+	
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v_bind学习</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			img{
+				width: 100px;
+				height: 100px;
+			}
+			.red{
+				color: red;
+			}
+			.green{
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<p v-bind:title="v_message">
+				鼠标悬停在此处，显示动态信息
+			</p>
+			
+			<button onclick="btn_click()">按钮</button>
+			
+			<hr />
+			<img src="https://cn.vuejs.org/images/logo.png" :src="imgSrc" alt="" />
+			
+			<!--<p v-bind:class="[red , green]">红绿交替出现</p>-->
+		
+			
+			
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var v  = new Vue({
+			el:"#app",
+			data:{
+				v_message : new Date().toLocaleString(),
+				imgSrc : "https://www.baidu.com/img/bd_logo1.png",
+			}
+		})
+		var bool = false;
+		function btn_click(){
+			if(bool){
+				
+			}
+			v.$data.v_message = "这是一个提示";
+			v.$data.imgSrc = 'https://cn.vuejs.org/images/logo.png';
+		}
+	</script>
+	
+</html>

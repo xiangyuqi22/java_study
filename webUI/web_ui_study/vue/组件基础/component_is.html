@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.tab-button {
+				padding: 6px 10px;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+				border: 1px solid #ccc;
+				cursor: pointer;
+				background: #f0f0f0;
+				margin-bottom: -1px;
+				margin-right: -1px;
+			}
+			
+			.tab-button:hover {
+				background: #008000;
+				color:white;
+			}
+			
+			.tab-button.active {
+				background: red;
+				color:yellow;
+			}
+			
+			.tab {
+				border: 1px solid #ccc;
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="app" class="demo">
+			
+			<button v-for="tab in tabs" 
+				:key="tab" 
+				@click="currentTab = tab" 
+				v-bind:class="{'tab-button' : true, 'active' : currentTab === tab}" 
+				v-bind:style="setStyle" 
+				>
+				{{tab}}
+			</button>
+			<!-- 失活的组件将会被缓存！-->
+			<keep-alive>
+				<component v-bind:is="isCurrentComponent" class="tab">
+					----- {{name}}---我知道那个人不会再来，但我还是在等
+				</component>
+			</keep-alive>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.component('tab_home' , {
+			template : '<div>HOME<slot></slot></div>'
+		})
+		Vue.component('tab_posts' , {
+			template : '<div>POSTS<slot></slot></div>'
+		})
+		Vue.component('tab_archive' , {
+			template : '<div>ARCHIVE <slot></slot></div>'
+		})
+		
+		var app = new Vue({
+			el: "#app",
+			data: {
+				currentTab : 'home',
+				tabs : ['home','posts','archive'],
+//				setStyle : {
+//					width : "421px",
+//				}
+			},
+			computed: {
+				isCurrentComponent : function(){
+					return 'tab_' + this.currentTab;
+				},
+				setStyle : function(){
+					return {
+						'width' : this.$el.clientWidth/this.tabs.length + 'px'
+					};
+				},
+				name : function(){
+					if(this.currentTab === 'home'){
+						return "李白";
+					}else if(this.currentTab === 'posts'){
+						return "杜甫";
+					}else{
+						return "白居易";
+					}
+				}
+			},
+
+		})
+	</script>
+
+</html>

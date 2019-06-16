@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<basic-component 
+				v-on:focus.native="focus" 
+				v-on:focusout.native="focusOut"
+				v-model = "changeValue"
+				></basic-component>
+			<h3>{{ isShow ? "获取鼠标焦点" : "失去鼠标焦点"}}</h3>
+			<h3>{{changeValue}}</h3>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('basic-component',{
+			template : ' \
+					<input \
+					v-bind:value="value1"\
+					v-on:change="$emit(\'change\',$event.target.value)"\
+					type="text" />  \
+			',
+			model : {
+				prop : 'value1',
+				event : 'change'
+			},
+			props : {
+				value1 : ""
+			}
+		})
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				isShow : false,
+				changeValue : ""
+			},
+			methods : {
+				focus : function(){
+					this.isShow = true;
+				},
+				focusOut : function(){
+					this.isShow = false;
+				}
+			},
+			
+		})
+	</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<blog-post content="我知道那个人不会再来"></blog-post>
+			<blog-post content="但我还是在等"></blog-post>
+			<blog-post content="我在门口坐了两天两夜"></blog-post>
+			<blog-post content="看着天空在不断的变化"></blog-post>
+			<blog-post content="我才发现来到这里这么久"></blog-post>
+			<blog-post content="却从来没有看清楚这片天空"></blog-post>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('blog-post' , {
+			props : ['content'],
+			template : "<div>{{content}}</div>"
+		})
+		
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>component  -  组件 </title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<ol>
+				<todo_item></todo_item>
+			</ol>
+			
+			<ul>
+				<todo_item2></todo_item2>
+			</ul>
+			<h2>局部挂载</h2>
+			<my-component></my-component>
+			
+		</div>
+		
+		<div id="app2"></div>
+		
+		<hr />
+	
+		
+		
+	</body>
+	
+	<script type="text/javascript">
+		/*方式一：直接添加   一步搞定*/ 
+		Vue.component('todo_item', {
+			template : '<li>这是一个template li</li>'
+		});
+		
+		/*方式二：注册  2步搞定*/
+		var item2 = Vue.extend({
+			template : '<li>这是一个template li， 通过注册方式生成 {{ name }}</li>',
+			data : function(){
+				return {name : "vue"};
+			}
+		})
+		Vue.component("todo_item2" , item2);
+		
+		var child = {
+			template : '<div>局部挂载</div>',
+		};
+		
+		/*以上组件创建  需要在new Vue() 对象之前  */
+		var app = new Vue({
+			el : "#app",
+			data:{
+			},
+			/*局部挂载  只是在当前注册区域内有效*/
+			components:{
+				'my-component' : child
+			}
+		});
+		
+		var item3 = Vue.extend({
+			template : '<li>通过挂载方式生成 {{ name }}</li>',
+			data : function(){
+				return {name : "vue"};
+			}
+		})
+		/* 创建一个实例 并挂载在对象app2上  此方式并不需要new vue  直接调用即可*/
+		new item3().$mount('#app2');
+		new item3({el : '#app2'}); /*跟上面方法的使用是一样的*/
+		
+		
+		
+		
+	</script>
+</html>

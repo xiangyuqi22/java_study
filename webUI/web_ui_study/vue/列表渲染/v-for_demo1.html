@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for demo</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<div v-for="(user,index) in userInfo" v-bind:key="user.id">
+				{{index}} ---- {{user.id}} -- {{user.name}} -- {{user.username}} -- {{user.nickName}}  -- {{user.star}}
+			</div>
+		</div>
+		
+	</body>
+	<script  type="text/javascript">
+		console.log(haohan);
+		
+		//前置过滤
+		//过滤掉所有username中带字母j的好汉
+		var filterHaohan = haohan.filter(function(item){
+			return item.username.indexOf("j") == -1;
+		})
+
+		var app = new Vue({
+			el : "#app",
+			data : {
+				userInfo : filterHaohan
+			},
+			methods : {
+			},
+		})
+		
+		
+		//重新设置数组长度 响应式
+//		app.$data.userInfo.splice(1);
+		
+		//重新设置数组数据   响应式
+//		var d = {id : 1 , name : "宋江" , username : 'songjiang' , star : "天魁星" , nickName : "呼保义" };
+//		Vue.set(app.$data.userInfo,0,d);
+		
+		//替换数组  运行中过滤
+		//过滤掉所有username中带字母j的好汉
+//		app.$data.userInfo = haohan.filter(function(item){
+//			return item.username.indexOf("j") == -1;
+//		})
+		
+		
+		
+	</script>
+</html>

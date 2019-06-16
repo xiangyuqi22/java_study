@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件2 - 组件之间的通信</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<input type="text" v-model="msg" />
+			<input type="text" v-model="name1" />
+			<child message="" name = "" v-bind = "todo"></child>
+			
+			<div v-bind:style="bind_style">{{msg}}</div>
+			
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript">
+		/*动态数据绑定*/
+		var myComponent = Vue.component("child" , {
+			props : ['message' , 'name'] ,
+			template :  '<div > 东邪西毒: {{message}} {{ name }}</div> ',
+			data : function(){
+				return {msg : "这是动态绑定的信息"};
+			}
+		})
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				msg : "",
+				name1 : "",
+				bind_style : "color:red;font-size:20px;",
+				todo : {
+					message : this.msg,
+					name : this.name1
+				},
+			}
+		}) 
+		
+		
+		
+	</script>
+</html>

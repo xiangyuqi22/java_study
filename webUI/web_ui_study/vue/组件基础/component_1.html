@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<button-counter></button-counter>
+			<button-counter></button-counter>
+			<button-counter></button-counter>
+			<button-counter></button-counter>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component("button-counter" ,  {
+			data : function(){
+				return {
+					count : 1
+				};
+			},
+			methods : {
+				add : function(){
+					this.count += 1;
+				}
+			},
+			template : "<button v-on:click='add'>点击增加{{count}}</button>",
+		});
+		
+		
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

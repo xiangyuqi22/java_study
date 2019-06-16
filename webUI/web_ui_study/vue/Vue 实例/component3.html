@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件   -- 循环数据绑定	</title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<template v-if="show">
+				<my-component 
+						v-for = "item in groceryList" 
+						v-bind:todo = "item" 
+						v-bind:key = "item.id">
+				</my-component>
+			</template>
+				
+		</div>
+		
+	</body>
+	<!--app.$data.groceryList[1].id= 99-->
+	<script type="text/javascript">
+		/*
+			 特别注意：驼峰命名的话，由于html不区分大小写，所以标签名会进行严格的区分
+			 如：myComponent  -> my-component  或者 mycomponent
+		 * */
+		Vue.component("myComponent" , {
+			props : ['todo'],
+			template : "<div>{{ todo.id }} : {{ todo.text }}</div>"
+		})
+		
+		var app = new Vue({
+			el : "#app" , 
+			data : {
+				groceryList : [
+					{ id : 1 , text : "宋江"},
+					{ id : 2 , text : "李白"},
+					{ id : 3 , text : "苏东坡"},
+				],
+				show : true
+			},
+			beforeMount : function(){
+				console.log("创建模块时执行");
+			},
+			mounted : function(){
+				console.log("模块创建成功时执行");
+			},
+			beforeUpdate : function(){
+				console.log("模块数据更新前执行");
+			},
+			updated : function(){
+				console.log("模块数据更新后执行")
+			},
+			beforeDestroy : function(){
+				console.log("模块销毁前执行");
+			},
+			destroyed :function(){
+				console.log("模块销毁后执行");
+			},
+			/* 执行销毁： app.$destroy();  */
+		})
+	</script>
+	
+	
+</html>

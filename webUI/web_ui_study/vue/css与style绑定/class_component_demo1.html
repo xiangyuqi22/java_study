@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>绑定class 应用在组件上</title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<style type="text/css">
+			.c{
+				color :red ;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<my-component v-bind:class="{ c : isc } " class = " d a"></my-component>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var myComponent = Vue.component("my-component" , {
+			template : "<div  class = 'a b'> 使用组件绑定css </div>",
+		});
+		var app = new Vue({
+			el : "#app" , 
+			data : {
+				isc : true
+			}
+		})
+		
+	</script>
+</html>

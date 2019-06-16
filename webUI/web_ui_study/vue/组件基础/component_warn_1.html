@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<div>
+				<blog-post-row></blog-post-row>
+				<blog-post-row></blog-post-row>
+				<blog-post-row></blog-post-row>
+				<blog-post-row></blog-post-row>
+				<blog-post-row></blog-post-row>
+			</div>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		Vue.component('blog-post-row',{
+//			template : "<tr><td>数据</td></tr>"
+//			template : "<h3>h3数据</h3>"
+//			template : "<li>li数据</li>"
+			template : "<div><input value='data' type='text'/> <br /></div>"
+		})
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+
+			},
+			methods : {
+
+			},
+			
+		})
+	</script>
+</html>

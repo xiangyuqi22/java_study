@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../../data/jsonData.js" ></script>
+		<script type="text/javascript" src="../../js/vue.js" ></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<component-inner-register></component-inner-register>
+			
+			<hr />
+			<h3>外部全局组件</h3>
+			<component-out-register></component-out-register>
+			
+			<hr />
+			<h2>组件内部嵌套使用组件</h2>
+			<component-register></component-register>
+			
+			<hr />
+		</div>
+	</body>
+	<script  type="text/javascript">
+
+		var component = {
+			template : `
+				<div>
+					<h3 v-for="user in haohan">{{user.name}}  --- {{user.nickName}}</h3>
+				</div>
+			`,
+			data : function(){
+				return {
+					haohan : haohan
+				}
+			}
+		}
+		
+		
+		Vue.component('component-out-register',component);
+		
+		
+		Vue.component('component-register',{
+			 /*该组件只有在内部才可以使用*/
+			components : {
+				'component-inner-register2' : component
+			},
+			template : `
+				<component-inner-register2></component-inner-register2>
+			`
+		})
+
+		var app = new Vue({
+			el : "#app",
+			data : {
+
+			},
+			methods : {
+				
+			},
+			components : {
+				"component-inner-register" : component
+			}
+			
+		})
+	</script>
+</html>

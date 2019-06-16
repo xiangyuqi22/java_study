@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>文本</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>{{message}}</h1>
+			<h2 v-once>{{message1}} , {{message}}</h2>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : "#app" , 
+			data :{
+				message : "多次显示的数据",
+				message1 :"只显示一次的数据"
+			}
+		})
+	</script>
+	
+</html>

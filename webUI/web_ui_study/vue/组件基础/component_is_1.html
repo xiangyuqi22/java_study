@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+		<style type="text/css">
+			.select{
+				background: black;
+				color: white;
+			}
+			.div1{
+				border: 1px solid #CCCCCC;
+				height: 200px;
+				padding: 20px;
+				background: beige;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<button
+					v-for="tab in tabs"
+					v-on:click="currentComponent = tab.username"
+					v-bind:class="{select : currentComponent == tab.username}"
+			>{{tab.name}}</button>
+				
+			<component v-bind:is="currentComponent" userObj="但我还是在等">
+					我知道那个人不会再来{{userObj1}}
+			</component>
+
+
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		var tabs = [];
+		for(var i=0;i<haohan.length;i++){
+			var user = haohan[i];
+			tabs.push(user);
+			Vue.component(user.username , {
+				template :"<div class='div1'> <p>"+ user.name +"  + {{userObj}}</p><slot></slot></div>",
+				props : ['userObj'],
+			})
+
+		}
+
+		var app = new Vue({
+			el : "#app",
+			data : {
+				tabs : tabs,
+				currentComponent : tabs[0].username,
+				userObj1 : "userObj1"
+			},
+			methods : {
+			},
+			computed : {
+			}
+			
+		})
+	</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../data/jsonData.js" ></script>
+	</head>
+	<body>
+		
+		<h4>
+			组件中的props 用于传递数据  v-bind:item ='item'  ->  props : ['item'] -> item.id
+		</h4>
+		
+		<div id="app">
+			<form v-on:submit.prevent="addNewItem">
+				<label for="">请输入姓名</label>
+				<input type="text" ref='itemInput' placeholder="请输入" />
+				<button>添加</button>
+			</form>
+			
+			<ul>
+				<li
+					is = 'my-component' 
+					v-for='(item , index) in items'
+					v-bind:key = 'item.id'
+					v-bind:title = 'item.name'
+					v-bind:item ='item'
+					v-bind:index = 'index'
+					v-on:remove = 'items.splice(index,1)'
+				>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		
+		
+		
+		Vue.component('my-component', {
+			template : '<li>{{index + 1}} --- {{title}} --- {{item.nickName}}   <button v-on:click="$emit(\'remove\')">移除</button></li>',
+			props : ['title','index','item']
+		})
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				items : haohan
+			},
+			methods : {
+				addNewItem : function(){
+					var name = this.$refs.itemInput.value;
+//					if(name === '' || name == null){
+//						alert("请先输入");
+//						return ;
+//					}
+					var obj = {
+						id : this.items.length + 1,
+						name : name
+					}
+					this.items.push(obj);
+					this.$refs.itemInput.value = "";
+				},
+//				remove : function(index){
+//					this.items.splice(index,1);
+//				}
+				
+			},
+			
+		})
+	</script>
+</html>

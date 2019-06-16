@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<title>v-if  study</title>
+		<style type="text/css">
+			.fade-enter-active, .fade-leave-active {
+			  transition: opacity 1s;
+			}
+			.fade-enter, .fade-leave-to{
+			  opacity: 0;
+			  /*transition: opacity 5s;*/
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<transition name="fade">
+				<div v-if="see"> 现在可以看到了</div>
+			</transition>
+			
+			
+			<button v-on:click="seeFun">点击我
+				<span v-if = "see">  隐藏  </span>
+				<span v-if = "!see"> 显示 </span>
+			</button>
+			
+			<br />
+			<hr />
+			<br />
+			
+			<img v-on:click="changeImage" v-bind:src="imgSrc"  />
+			
+			
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				see : false,
+				imgSrc : "https://static.easyicon.net/preview/122/1229444.gif"
+			},
+			methods : {
+				seeFun : function(){
+					this.see = !this.see;
+					return this.see;
+				},
+				changeImage : function(){
+					if(this.imgSrc == "https://static.easyicon.net/preview/122/1229444.gif"){
+						this.imgSrc = "https://static.easyicon.net/preview/122/1229443.gif";
+					}else{
+						this.imgSrc = "https://static.easyicon.net/preview/122/1229444.gif"
+					}
+				}
+			}
+		})
+	</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<basic-input v-model="show" v-on:copyyy="theCopy" label="姓名"></basic-input>
+			<basic-input v-model="show1" v-on:copyyy="theCopy" label="年龄" v-on:copy="copy2"></basic-input>
+			<h3>{{show}}</h3>
+			<h3>{{show1}}</h3>
+		</div>
+	</body>
+	<script  type="text/javascript">
+		Vue.component('basic-input' , {
+			inheritAttrs: false,
+			template : '\
+				<p> \
+					{{ label }}\
+					<input type="text" v-bind="$attrs" v-on="inputLinster" v-bind:value="value" > \
+				</p> \
+			',
+			props :['value','label'],
+			computed : {
+				inputLinster : function(){
+					var vm = this;
+					// `Object.assign` 将所有的对象合并为一个新对象
+					return Object.assign({},
+						// 我们从父级添加所有的监听器
+						this.$listeners , 
+						// 然后我们添加自定义监听器，
+      					 // 或覆写一些监听器的行为
+						{
+							// 这里确保组件配合 `v-model` 的工作
+							input : function(event){
+								vm.$emit("input" ,  event.target.value);
+							},
+							copy : function(event){
+								console.log(event);
+								vm.$emit('copyyy' , event);
+							}
+							
+						}
+					);
+				}
+			}
+			
+			
+		})
+		
+		
+		
+		var app = new Vue({
+			el : "#app",
+			data : {
+				show : "" , 
+				show1 : "" ,
+				showLabel : "VUE is good"
+			},
+			methods : {
+				theCopy : function(event){
+					console.log(event);
+				},
+				copy2 : function(event){
+					//这个方法是不会被执行的
+					console.log("copy2" + event);
+				}
+			},
+			
+		})
+	</script>
+</html>

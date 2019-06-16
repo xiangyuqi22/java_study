@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>html 显示</title>
+		<script type="text/javascript" src="js/vue.js" ></script>
+		<style type="text/css">
+			#app1{
+				color:green;
+			}
+			#app2{
+				color:orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h1 v-html="message">{{message}}</h1>
+			<h2 v-once> {{message}} , {{message1}} ,</h2>
+			
+			<h3 v-bind:id="dynamicId" v-on:click="dynamicShow">这里是动态id</h3>
+			
+			<button v-bind:disabled="isDisabled" v-on:click="hiddenBtn">点击禁用当前按钮</button>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var vm = new Vue({
+			el : "#app" , 
+			data :{
+				message : "<div style='color:red'>这里显示红色</div>",
+				message1 : "<div style='color:red'>这里显示原生标签</div>",
+				dynamicId : "app1",
+				isDisabled : false
+			},
+			methods : {
+				dynamicShow : function(){
+					console.log("改变样式");
+					this.dynamicId == "app1" ? this.dynamicId = "app2" : this.dynamicId = "app1";
+				},
+				hiddenBtn : function(){
+					this.isDisabled = true;
+				}
+			}
+		})
+	</script>
+	
+</html>

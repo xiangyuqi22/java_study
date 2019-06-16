@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-model</title>
+		<script src="js/vue.js"></script>
+		<style type="text/css">
+			.c1{
+				color : green;
+			}
+			.c2{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<!--model 数据双向绑定-->
+			<!--focus 获取焦点，可传入事件-->
+			<input type="text" 
+					v-model="message" 	
+					v-on:focus="focuss" 	
+					v-on:focusout="focusoutt" 
+					v-bind:readonly="false" 
+					v-bind:pattern="pattern1"
+					v-bind:align="alignn"
+					v-bind:autofocus="true"
+					v-bind:class="classs"
+					v-bind:hidden="hiddenn"
+					/>
+			<br />
+				请选择:  <input type="checkbox" name="" id="" value="" v-bind:checked="true" />
+			<br />
+			<input type="submit" value="提交" v-on:click="show"/>
+			<br />
+			<p v-bind:align="alignn" v-bind:class="classs">居中显示  -- {{message}}</p>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var arr = [1,2,3];
+		
+		var app = new Vue({
+			el : "#app",
+			data:{
+				message : "name",
+				pattern1 : "^[0-9]*$",
+				alignn : "center",
+				classs : "c1",
+				hiddenn : false
+			},
+			methods : {
+				show : function(){
+					console.log(this.message);
+					this.classs = "c2";
+					this.hiddenn = true;
+				},
+				focuss : function(e){
+					console.log(e);
+				},
+				focusoutt : function(){
+					console.log(this.message);
+				},
+				selectt : function(){
+					console.log("选择了");
+				}
+			},
+		});
+		
+	</script>
+</html>

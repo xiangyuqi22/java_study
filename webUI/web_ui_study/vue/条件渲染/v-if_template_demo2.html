@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<template v-if="type == 'username'">
+				用户名 ：<input type="text" placeholder="请输入您的用户名" />
+			</template>
+			<template v-if="type == 'email'">
+				邮箱：<input type="text" name="" id="" value="" placeholder="请输入您的邮箱"/>
+			</template>
+			<br />
+			<button v-on:click="toggle">切换</button>
+			
+		</div>
+	</body>
+	<script  type="text/javascript">
+		var app = new Vue({
+			el : "#app",
+			data : {
+				type : 'username'
+			},
+			methods : {
+				toggle : function(){
+					if(this.type == 'username'){
+						this.type  = 'email';
+					}else{
+						this.type = 'username';
+					}
+				}
+			},
+			
+		})
+	</script>
+</html>
