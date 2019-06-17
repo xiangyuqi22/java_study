@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since JDK1.8
  */
 @EnableAutoConfiguration
-@RestController("/auto")
+@RestController()
 public class AutoController {
 	
 	@RequestMapping("/auto")

@@ -1,6 +1,8 @@
 package com.example.annotation;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.core.annotation.AliasFor;
 
 /**
  * <PRE>
@@ -14,7 +16,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author xiangning
  * @since JDK1.8
  */
-@SpringBootApplication
+@SpringBootApplication()
 public @interface MySpringbootAnnotation {
-
+	
+	@AliasFor(annotation = SpringBootApplication.class, attribute = "basePackages")
+	String[] scanBasePackages() default {};
+	
 }
