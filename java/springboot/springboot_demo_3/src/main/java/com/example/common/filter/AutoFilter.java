@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 /**
  * <PRE>
@@ -31,12 +32,13 @@ import org.springframework.core.annotation.Order;
 		@WebInitParam(name="auto",value="login")
 })
 @Order(20)
+@Component
 public class AutoFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("AutoFilter.doFilter(ServletRequest, ServletResponse, FilterChain)");
+		System.out.println("filter.AutoFilter.doFilter(ServletRequest, ServletResponse, FilterChain)");
 		String password = request.getParameter("password");
 		if("boot".equals(password)) {
 			chain.doFilter(request, response);
@@ -49,7 +51,7 @@ public class AutoFilter implements Filter {
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		System.out.println("AutoFilter.init(FilterConfig)");
+		System.out.println("filter.AutoFilter.init(FilterConfig)");
 		filterConfig.getFilterName();
 		Enumeration<String> initParameterNames = filterConfig.getInitParameterNames();
 		while(initParameterNames.hasMoreElements()) {
@@ -60,7 +62,7 @@ public class AutoFilter implements Filter {
 
 	@Override
 	public void destroy() {
-		System.out.println("AutoFilter.destroy()");
+		System.out.println("filter.AutoFilter.destroy()");
 	}
 	
 	

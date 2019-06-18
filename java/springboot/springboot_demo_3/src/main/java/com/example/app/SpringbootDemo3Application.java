@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.annotation.MySpringbootAnnotation;
 
 @MySpringbootAnnotation
-@ComponentScan("com.example.controller,com.example.config")
+@ComponentScan({"com.example.controller","com.example.config"})
 @Controller
-@ServletComponentScan("com.example.common")
+@ServletComponentScan({"com.example.common"})
 public class SpringbootDemo3Application {
 	
 	@RequestMapping("/")

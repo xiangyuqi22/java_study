@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 
 import com.example.utils.StringUtil;
 
@@ -33,6 +34,7 @@ import com.example.utils.StringUtil;
 		@WebInitParam(name="suffix",value=".js")
 })
 @Order(10)
+@Component
 public class LoginFilter implements Filter{
 	
 	private FilterConfig filterConfig;
@@ -40,7 +42,7 @@ public class LoginFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		System.out.println("LoginFilter.doFilter(ServletRequest, ServletResponse, FilterChain)");
+		System.out.println("filter.LoginFilter.doFilter(ServletRequest, ServletResponse, FilterChain)");
 		String username = request.getParameter("username");
 		System.out.println("请求用户名: username = " + username);
 		if("spring".equals(username)) {
@@ -54,7 +56,7 @@ public class LoginFilter implements Filter{
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		System.out.println("LoginFilter.init(FilterConfig)");
+		System.out.println("filter.LoginFilter.init(FilterConfig)");
 		this.filterConfig = filterConfig;
 		filterConfig.getFilterName();
 		Enumeration<String> initParameterNames = filterConfig.getInitParameterNames();
@@ -66,7 +68,7 @@ public class LoginFilter implements Filter{
 
 	@Override
 	public void destroy() {
-		System.out.println("LoginFilter.destroy()");
+		System.out.println("filter.LoginFilter.destroy()");
 	}
 	
 }
