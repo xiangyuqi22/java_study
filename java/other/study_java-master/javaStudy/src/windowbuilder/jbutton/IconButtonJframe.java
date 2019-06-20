@@ -1,8 +1,11 @@
 package windowbuilder.jbutton;
 
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -57,10 +60,38 @@ public class IconButtonJframe extends JFrame {
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER));
+		StbButtonGroup group = new StbButtonGroup();
+		
+		{
+			IconButton btnNewButton = new IconButton("play");
+			group.add(btnNewButton,true,true);
+			contentPane.add(btnNewButton);
+		}
+		
+		{
+			IconButton btnNewButton = new IconButton("play");
+			group.add(btnNewButton,false,true);
+			contentPane.add(btnNewButton);
+		}
+		{
+			IconButton btnNewButton = new IconButton("play");
+			group.add(btnNewButton,false,true);
+			contentPane.add(btnNewButton);
+		}
+		{
+			IconButton btnNewButton = new IconButton("play");
+			group.add(btnNewButton,false,true);
+			contentPane.add(btnNewButton);
+			btnNewButton.addMouseListener(new MouseAdapter() {
 
-		IconButton btnNewButton = new IconButton("");
-		contentPane.add(btnNewButton);
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					btnNewButton.setEnabled(false);
+				}
+				
+			});
+		}
 	}
 }
 
@@ -71,34 +102,29 @@ class IconButton extends JButton {
 	/**
 	 * Creates a new instance of IconButton. 
 	 * @param iconName  按钮名称  严格按照名字来命令   按钮默认作用+动作+后缀
-	 * play_normal.png
-	 * play_rollover.png
-	 * play_disabled.png
-	 * play_disabledSelected.png
-	 * play_rolloverSelected.png
-	 * play_pressed.png
-	 * play_selected.png
+	 * play_normal.png  				默认图标
+	 * play_rollover.png				鼠标移入后
+	 * play_disabled.png				按钮禁用状态
+	 * play_disabledSelected.png		选中+禁用
+	 * play_rolloverSelected.png		按钮选中后,鼠标移入
+	 * play_pressed.png					鼠标按下
+	 * play_selected.png				选中状态
 	 * 
 	 */
 	public IconButton(String iconName) {
-		ImageIcon playIcon = ImageUtils.getIcon(iconName + "_normal" + PNG);
-		if(playIcon == null) {
+		ImageIcon normalIcon = ImageUtils.getIcon(iconName + "_normal" + PNG);
+		if(normalIcon == null) {
 			return;
 		}
+		super.setIcon(normalIcon);
+		super.setDisabledIcon(ImageUtils.getIcon(iconName + "_disabled" + PNG));
+		super.setRolloverIcon(ImageUtils.getIcon(iconName + "_rollover" + PNG));
+		super.setDisabledSelectedIcon(ImageUtils.getIcon(iconName + "_disabledSelected" + PNG));
+		super.setPressedIcon(ImageUtils.getIcon(iconName + "_pressed" + PNG));
+		super.setRolloverSelectedIcon(ImageUtils.getIcon(iconName + "_rolloverSelected" + PNG));
+		super.setSelectedIcon(ImageUtils.getIcon(iconName + "_selected" + PNG));
 		
-		super.setDisabledIcon(null);
-		super.setRolloverIcon(null);
-		super.setDisabledSelectedIcon(null);
-		super.setPressedIcon(null);
-		super.setRolloverSelectedIcon(null);
-		super.setSelectedIcon(null);
-		
-		
-//		ImageIcon playIcon = ImageUtils.getIcon("pause.png");
-		super.setIcon(ImageUtils.getIcon("play.png"));
-		super.setRolloverIcon(ImageUtils.getIcon("pause.png"));
-		super.setBounds(110, 110, 48, 48);
-		Dimension d = new Dimension(48, 48);
+		Dimension d = new Dimension(normalIcon.getIconWidth(), normalIcon.getIconHeight());
 		super.setSize(d);
 		super.setMaximumSize(d);
 		super.setMinimumSize(d);

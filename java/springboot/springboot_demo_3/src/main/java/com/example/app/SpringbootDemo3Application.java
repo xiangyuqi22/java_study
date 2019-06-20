@@ -8,13 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.annotation.MySpringbootAnnotation;
 
-@MySpringbootAnnotation
-@ComponentScan({"com.example.controller","com.example.config"})
+@SpringBootApplication()
+@ComponentScan(value = {"com.example.controller","com.example.config","com.example.utils"})
 @Controller
 @ServletComponentScan({"com.example.common"})
 public class SpringbootDemo3Application {
+
 	
 	@RequestMapping("/")
 	@ResponseBody
