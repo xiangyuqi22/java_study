@@ -34,6 +34,10 @@ public class Base64JDK {
 		
 		String loginData = username + "," + dept + "," + System.currentTimeMillis();
 		
+		
+		loginData = "{\"from\":\"stbinter\",\"token\":\"dbsd-fdsf-sevs-32fv-32fs\",\"time\":\"15932434323\"}";
+		
+		
  		System.out.println(loginData);
 
 		try {
@@ -42,7 +46,7 @@ public class Base64JDK {
 			String data = encoder.encode(loginData.getBytes());
 			System.out.println("BASE64º”√‹£∫" + data);
 			
-			GlobalUtils.sleep(2000);
+//			GlobalUtils.sleep(2000);
 			// BASE64Ω‚√‹
 			BASE64Decoder decoder = new BASE64Decoder();
 			byte[] bytes = decoder.decodeBuffer(data);

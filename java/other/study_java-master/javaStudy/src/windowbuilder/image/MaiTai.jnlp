@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="http://projects.joshy.org/MaiTai/beta/current/" href="MaiTai.jnlp" spec="1.0+">
+  <information>
+    <title>Mai Tai</title>
+    <vendor>Josh Marinacci</vendor>
+    <homepage href="http://kenai.com/projects/maitai/" />
+    <description>Mai Tai Visual Art Tool</description>
+    <offline-allowed />
+    <icon href="icon.png" />
+    <icon href="splash.png" kind="splash" />
+    <association extensions="maitai" mime-type="application-x/maitai">
+      <description>Mai Tai graphics file</description>
+      <icon href="doc-icon.png" />
+    </association>
+    <shortcut online="false">
+      <desktop />
+      <menu submenu="Mai Tai" />
+    </shortcut>
+  </information>
+  <security>
+    <all-permissions />
+  </security>
+  <update check="background" policy="prompt-update" />
+  <resources>
+    <j2se initial-heap-size="64m" java-vm-args="-d32" max-heap-size="512m" version="1.6+" />
+    <extension href="http://dl.javafx.com/1.2/javafx-rt.jnlp" name="JavaFX Runtime" />
+    <jar download="eager" href="Launcher.jar" main="true" />
+    <jar download="eager" href="lib/DeployHooks.jar" main="false" />
+    <jar download="eager" href="lib/JoshFXCommons.jar" main="false" />
+    <jar download="lazy" href="ParticlePatch.jar" part="core" />
+    <jar download="lazy" href="lib/JFXtras-0.5.jar" part="core" />
+    <jar download="lazy" href="lib/jlayer.jar" part="core" />
+    <property name="maitai.forcePluginRedownload" value="true" />
+    <property name="maitai.buildNumber" value="10" />
+    <property name="maitai.buildTimestamp" value="2012-08-31_17-59" />
+  </resources>
+  <resources arch="i386" os="Mac OS X">
+    <property name="maitai.enableMultitouch" value="true" />
+    <jar download="eager" href="lib/GlulogicMT.jar" part="multitouch" />
+    <nativelib download="eager" href="lib/GlulogicMT_mac_natives.jar" part="multitouch" />
+  </resources>
+  <application-desc main-class="launcher.Main" />
+</jnlp>
