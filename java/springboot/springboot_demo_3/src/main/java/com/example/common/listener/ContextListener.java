@@ -22,13 +22,13 @@ public class ContextListener implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		System.out.println("初始化数据");
-		System.out.println("listener.ContextListener.contextInitialized(ServletContextEvent)");
+		System.out.println("容器启动监听器-开始 -->> listener.ContextListener.contextInitialized(ServletContextEvent)");
 	}
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
 		System.out.println("销毁数据");
-		System.out.println("listener.ContextListener.contextDestroyed(ServletContextEvent)");
+		System.out.println("容器启动监听器-结束 -->> listener.ContextListener.contextDestroyed(ServletContextEvent)");
 	}
 	
 	
