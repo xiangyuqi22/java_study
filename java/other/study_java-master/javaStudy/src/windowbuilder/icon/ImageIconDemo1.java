@@ -1,12 +1,17 @@
-package windowbuilder.jtextarea;
+package windowbuilder.icon;
 
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JLabel;
+
+import com.sun.imageio.plugins.common.ImageUtil;
+
+import other.basic.util.ImageUtils;
+
 import java.awt.BorderLayout;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.Color;
 
 /**
  * <PRE>
@@ -16,11 +21,11 @@ import java.awt.event.KeyEvent;
  * 项目名称：javaStudy</BR>
  * 技术支持：广东凯通科技股份有限公司 (c) 2017</BR>
  * 
- * @version 1.0 2019年4月17日
+ * @version 1.0 2019年7月4日
  * @author xiangning
  * @since JDK1.8
  */
-public class JTextAreaDemo1 {
+public class ImageIconDemo1 {
 
 	private JFrame frame;
 
@@ -31,7 +36,7 @@ public class JTextAreaDemo1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JTextAreaDemo1 window = new JTextAreaDemo1();
+					ImageIconDemo1 window = new ImageIconDemo1();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +48,7 @@ public class JTextAreaDemo1 {
 	/**
 	 * Create the application.
 	 */
-	public JTextAreaDemo1() {
+	public ImageIconDemo1() {
 		initialize();
 	}
 
@@ -52,17 +57,14 @@ public class JTextAreaDemo1 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 496, 386);
+		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.GREEN);
+		ImageIcon icon = ImageUtils.getIcon("loading.gif");
+		JLabel lblNewLabel = new JLabel(icon);
+		lblNewLabel.setText("gif动图");
+		frame.getContentPane().add(lblNewLabel, BorderLayout.CENTER);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-		});
-		textArea.setText("<html><b>这是</b></html>");
-		frame.getContentPane().add(textArea, BorderLayout.CENTER);
 	}
 
 }

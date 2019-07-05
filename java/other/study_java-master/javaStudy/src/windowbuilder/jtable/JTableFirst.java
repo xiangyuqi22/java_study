@@ -7,6 +7,10 @@ import javax.swing.JScrollPane;
 
 import java.awt.BorderLayout;
 import javax.swing.table.DefaultTableModel;
+
+import com.alee.laf.WebLookAndFeel;
+import com.alee.laf.table.WebTableUI;
+
 import javax.swing.JTable;
 
 /**
@@ -34,6 +38,7 @@ public class JTableFirst {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+//					WebLookAndFeel.install();
 					JTableFirst window = new JTableFirst();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -62,6 +67,7 @@ public class JTableFirst {
 		frame.getContentPane().add(scrollPane, BorderLayout.CENTER);
 		
 		table_1 = new JTable();
+		table_1.setUI(new WebTableUI());
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"11", "22", "22"},

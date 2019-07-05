@@ -1,12 +1,12 @@
-package windowbuilder.jtextarea;
+package windowbuilder.jbutton;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JButton;
 import java.awt.BorderLayout;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import javax.swing.border.LineBorder;
+import java.awt.Color;
 
 /**
  * <PRE>
@@ -16,11 +16,11 @@ import java.awt.event.KeyEvent;
  * 项目名称：javaStudy</BR>
  * 技术支持：广东凯通科技股份有限公司 (c) 2017</BR>
  * 
- * @version 1.0 2019年4月17日
+ * @version 1.0 2019年6月27日
  * @author xiangning
  * @since JDK1.8
  */
-public class JTextAreaDemo1 {
+public class ButtonBorderDemo1 {
 
 	private JFrame frame;
 
@@ -31,7 +31,7 @@ public class JTextAreaDemo1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JTextAreaDemo1 window = new JTextAreaDemo1();
+					ButtonBorderDemo1 window = new ButtonBorderDemo1();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +43,7 @@ public class JTextAreaDemo1 {
 	/**
 	 * Create the application.
 	 */
-	public JTextAreaDemo1() {
+	public ButtonBorderDemo1() {
 		initialize();
 	}
 
@@ -52,17 +52,16 @@ public class JTextAreaDemo1 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 496, 386);
+		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-		});
-		textArea.setText("<html><b>这是</b></html>");
-		frame.getContentPane().add(textArea, BorderLayout.CENTER);
+		JButton button = new JButton("\u7EAF\u989C\u8272\u6309\u94AE");
+		button.setForeground(Color.RED);
+		button.setBackground(Color.WHITE);
+		button.setBorder(new LineBorder(new Color(255, 0, 0), 1, true));
+		button.setBounds(109, 79, 191, 62);
+		frame.getContentPane().add(button);
 	}
 
 }

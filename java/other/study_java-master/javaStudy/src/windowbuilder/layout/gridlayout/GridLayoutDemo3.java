@@ -1,12 +1,14 @@
-package windowbuilder.jtextarea;
+package windowbuilder.layout.gridlayout;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.GridLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 /**
  * <PRE>
@@ -16,13 +18,14 @@ import java.awt.event.KeyEvent;
  * 项目名称：javaStudy</BR>
  * 技术支持：广东凯通科技股份有限公司 (c) 2017</BR>
  * 
- * @version 1.0 2019年4月17日
+ * @version 1.0 2019年7月1日
  * @author xiangning
  * @since JDK1.8
  */
-public class JTextAreaDemo1 {
+public class GridLayoutDemo3 {
 
 	private JFrame frame;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -31,7 +34,7 @@ public class JTextAreaDemo1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					JTextAreaDemo1 window = new JTextAreaDemo1();
+					GridLayoutDemo3 window = new GridLayoutDemo3();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +46,7 @@ public class JTextAreaDemo1 {
 	/**
 	 * Create the application.
 	 */
-	public JTextAreaDemo1() {
+	public GridLayoutDemo3() {
 		initialize();
 	}
 
@@ -52,17 +55,22 @@ public class JTextAreaDemo1 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 496, 386);
+		frame.setBounds(100, 100, 732, 411);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-		});
-		textArea.setText("<html><b>这是</b></html>");
-		frame.getContentPane().add(textArea, BorderLayout.CENTER);
+		JPanel panel = new JPanel();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		panel.add(lblNewLabel);
+		
+		textField = new JTextField();
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnNewButton = new JButton("New button");
+		panel.add(btnNewButton);
 	}
 
 }
