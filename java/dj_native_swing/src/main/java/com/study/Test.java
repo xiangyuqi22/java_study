@@ -7,6 +7,8 @@ import javax.swing.SwingUtilities;
 
 import chrriis.common.UIUtils;
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import chrriis.dj.nativeswing.swtimpl.WebBrowserObject;
+import chrriis.dj.nativeswing.swtimpl.WebBrowserObject.ObjectHTMLConfiguration;
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 
 public class Test extends JPanel {
@@ -34,6 +36,21 @@ public class Test extends JPanel {
 		add(webBrowserPanel, BorderLayout.CENTER);
 		webBrowser.executeJavascript("alert('haha')"); //执行Js代码
 //		webBrowser.setHTMLContent("<html><body>html111</body></html>");
+		
+//		WebBrowserObject webBrowserObject = new WebBrowserObject(webBrowser) {
+//			
+//			@Override
+//			protected ObjectHTMLConfiguration getObjectHtmlConfiguration() {
+//				ObjectHTMLConfiguration conf = new ObjectHTMLConfiguration();
+//				conf.setWindowsParamName("这是自己创建的");
+//				return conf;
+//			}
+//		};
+//		
+//		System.out.println(webBrowserObject.getLoadedResource());
+		
+		
+		
 	}
 
 	public static void main(String[] args) {

@@ -1,4 +1,10 @@
 package other.basic.string;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+
 /**
  * <PRE>
  * 添加类描述
@@ -14,6 +20,18 @@ package other.basic.string;
 public class StringDemo1 {
 	
 	public static void main(String[] args) {
+		
+		Map paramMap = new HashMap<>();
+		
+		
+		new ArrayList<>(new HashSet());
+		
+		
+		//根据机顶盒id查询缺陷详情
+		//根据机顶盒id查询日志里面的脚本
+		
+		System.out.println(new HashMap<>().get("a") + "");
+		
 		String originName = "mystudy.jpg";
 		String suffix = originName.substring(originName.lastIndexOf("."),originName.length());
 		System.out.println(suffix);

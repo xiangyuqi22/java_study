@@ -23,6 +23,12 @@ public class ListDemo1 {
 		list.add("c");
 		list.add("d");
 		list.add("e");
+		
+		int row = 3;
+		if(row > list.size()) {
+			row = list.size();
+		}
+		list.add(row,"999");
 		System.out.println(list.toString());
 	}
 

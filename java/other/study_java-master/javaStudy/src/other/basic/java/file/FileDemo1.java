@@ -23,6 +23,11 @@ public class FileDemo1 {
 		System.out.println(File.separator);
 		System.out.println((double)file.length() / 1024);
 		
+		System.out.println("------------------------------------------");
+		System.out.println("File.separator = " + File.separator);
+		System.out.println("File.pathSeparator = " + File.pathSeparator);
+		System.out.println("File.pathSeparatorChar = " + File.pathSeparatorChar);
+		System.out.println("File.separatorChar = " + File.separatorChar);
 		
 		
 		

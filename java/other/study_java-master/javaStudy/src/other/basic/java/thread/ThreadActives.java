@@ -14,7 +14,35 @@ package other.basic.java.thread;
 public class ThreadActives {
 	
 	public static void main(String[] args) throws InterruptedException {
+//		demo1();
 		
+		demo2();
+		
+		
+		
+		
+	}
+	
+	/**
+	 * demo2:(线程start前后状态)
+	 * @author xiangning
+	 *
+	 */
+	private static void demo2() {
+		
+		Thread thread = new Thread(() -> {});
+		System.out.println(thread.isAlive());
+		thread.start();
+		System.out.println(thread.isAlive());
+
+	}
+	
+	
+	
+	
+	
+	
+	private static void demo1() {
 		new Thread(
 				() ->{
 					try {
@@ -53,7 +81,12 @@ public class ThreadActives {
 				}
 				).start();
 		
-		Thread.sleep(100L);
+		try {
+			Thread.sleep(100L);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("顶级线程： " + Thread.activeCount());
 	}
 
