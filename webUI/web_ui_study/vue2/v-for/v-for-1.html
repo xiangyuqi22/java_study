@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-for循环遍历</title>
+		<script src="../data/jsonData.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h2>遍历数组</h2>
+			<h3 v-for="(hh,index) in haohan">
+			{{index}} -- {{hh.id}} -- {{hh.name}} -- {{hh.username}} -- {{hh.nickName}} -- {{hh.star}}
+			</h3>
+			
+			<hr>
+			<h2>遍历对象</h2>
+			<h3 v-for="(value,index) in songjiang">
+				{{index}} -- {{value}}
+			</h3>
+			
+			<hr>
+			
+			<h2>使用 template  可以去除一些无用的标签</h2>
+				<template v-for="(hh,index) in haohan">
+					<h3>姓名: {{hh.name}}</h3>
+					<p>{{index}} -- {{hh.id}} -- {{hh.name}} -- {{hh.username}} -- {{hh.nickName}} -- {{hh.star}}</p>
+				</template>
+			
+			
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript">
+		var vue = new Vue({
+			el : "#app",
+			data : {
+				haohan : haohan,
+				songjiang : songjiang
+			},
+		})
+	</script>
+</html>

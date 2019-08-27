@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>键盘事件</title>
+		<script src="../js/vue.js" ></script>
+		<style type="text/css">
+			p label:nth-child(1){
+				display: inline-block;
+				width:  80px;
+				color: #13CE66;
+				text-align: right;
+				padding-right: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>vue的键盘事件</h2>
+		<h4>v-on:keyup.enter="funName()" </h4>
+		<div id="app">
+			
+			<form action="login.action" method="get" id="form" v-on:keyup.enter="submit(this)" >
+				
+				<p>
+					<label>用户名:</label>
+					<input type="text" name="username" v-model="username" >
+					<label>{{username}}</label>
+				</p>
+				<p>
+					<label>密码:</label>
+					<input type="password" name="passwd" v-model="passwd" v-on:keyup="inputData">
+					{{passwd}}
+				</p>
+				<input type="submit" value="登录"/>
+			</form>
+			
+		</div>
+		
+		<script type="text/javascript">
+			
+			new Vue({
+				el : "#app",
+				data:{
+					username:"",
+					passwd:"",
+				},
+				methods:{
+					submit:function(obj){
+						obj.submit();
+					},
+					inputData:function(event){
+						console.log(this.username);
+					}
+				}
+			})
+			
+			
+		</script>
+	</body>
+</html>

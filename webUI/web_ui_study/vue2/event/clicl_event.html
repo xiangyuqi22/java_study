@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue事件处理</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#canvas{
+				width : 300px ;
+				height : 150px ;
+				display: block;
+				border: #0000FF solid 2px;
+				margin: 20px auto;
+				text-align: center;
+				padding-top: 150px;
+			}
+			#canvas > span{
+				width : 100px ;
+				height: 50px ;
+				background: #8CC5FF;
+				display: inline-block
+			}
+			#canvas span:nth-child(2){
+				background: #85CE61;
+			}
+		</style>
+	
+	</head>
+	<body>
+		
+		<div id="app">
+			<h3>当前年龄是：{{age}}</h3>
+			<button type="button" @click.once="add(1)">加一岁</button>
+			<button type="button" @click="subtrack(1)">减一岁</button>
+			<button type="button" @dblclick="add(10)">双击加十岁</button>
+			<button  @dblclick="subtrack(10)">双击减十岁</button>
+			<button type="button" @click="updateXY">updateXY</button>
+			
+			<div id="canvas" v-on:mousemove="updateXY">
+				{{x}}  -  {{y}}
+				<span v-on:mousemove="stopMoving">Stop Moving - 事件 js</span>
+				<span v-on:mousemove.stop="">Stop Moving - vue stop</span>
+			</div>
+			
+			<!-- 阻止事件传播 -->
+			
+			<hr>
+			<a v-on:click.prevent="toTaobao" href="http://www.baidu.com">百度一下你就知道</a>
+			
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript">
+		var vue = new Vue(
+			{
+				el:"#app",
+				data : {
+					age : 30,
+					x : 0,
+					y : 0,
+				},
+				methods : {
+					add : function(inc){
+						this.age += inc;
+					},
+					subtrack : function(dec){
+						this.age -= dec;
+					},
+					updateXY : function(event){
+						this.x = event.offsetX;
+						this.y  = event.offsetY;
+					},
+					stopMoving : function(event){
+						//停止冒泡事件
+						event.stopPropagation();
+					},
+					toTaobao : function(){
+						var bool = confirm("确认跳转到淘宝?");
+						if(bool ){
+							window.open("http://www.taobao.com","blank");
+						}else{
+							window.open("http://www.baidu.com");
+						}
+					}
+				}
+			}
+		);
+	</script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算属性 - methods 与 computed 的区别</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+			<p>
+				<button type="button" v-on:click="a++" >buttonA</button>
+			</p>
+			<p>
+				<button type="button" v-on:click="b++">buttonB</button>
+			</p>
+			<p>
+				<button type="button">buttonC -- {{addC()}}</button>
+			</p>
+			<h3>A = {{a}}</h3>
+			<h3>B = {{b}}</h3>
+			<h3>A + age = {{addA()}}</h3>
+			<h3>B + age = {{addB()}}</h3>
+			
+			
+			<hr>
+			<p>
+				<button type="button" v-on:click="d++" >buttonD</button>
+			</p>
+			<p>
+				<button type="button" v-on:click="e++">buttonE</button>
+			</p>
+			<p>
+				<button type="button">buttonF -- {{addF}}</button>
+			</p>
+			<h3>D = {{d}}</h3>
+			<h3>E = {{e}}</h3>
+			<h3>D + age = {{addD}}</h3>
+			<h3>E + age = {{addE}}</h3>
+			
+			
+			
+		</div>
+		
+		<script type="text/javascript">
+			new Vue({
+				"el" : "#app",
+				data : {
+					a : 0,
+					b : 0,
+					d : 0,
+					e : 0,
+					age : 20
+				},
+				methods:{
+					addA : function(){
+						console.log("a增加了一次 a = " + this.a);
+						return this.a + this.age;
+					},
+					addB : function(){
+						console.log("b增加了一次 b = " + this.b);
+						return this.b + this.age;
+					},
+					addC : function(){
+						console.log("addC" + this.age);
+						return this.a + this.b + this.age;
+					}
+				},
+				computed:{
+					addD : function(){
+						console.log("computed  ----- d增加了一次 d = " + this.d);
+						return this.d + this.age;
+					},
+					addE : function(){
+						console.log("computed  ----- e增加了一次 e = " + this.e);
+						return this.e + this.age;
+					},
+					addF :  function(){
+						console.log("computed  ----- addF ----- " + this.age);
+						return this.d + this.e + this.age;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

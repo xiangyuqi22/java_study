@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>双向数据绑定</title>
+		<script src="../../vue/js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<h2>
+			双向数据绑定,只针对input / select / textarea 才有效
+		</h2>
+		
+		<div id="app">
+			
+			<div ref="message"></div>
+			
+			<form ref="form" action="login.html" method="get" v-on:keyup.enter="submit()">
+				<p>
+					<label>第一种实现方法v-model:</label>
+					<input type="text" ref="username" name="username" v-model="username" />
+					<label>{{username}}</label>
+				</p>
+				<p>
+					<label>第二种实现方法ref:</label>
+					<input type="text" ref="passwd" name="passwd" v-on:keyup="showPasswd"/>
+					<label>{{passwd}}</label>
+				</p>
+				<p>
+					<button type="button" v-on:click="go">
+						提交
+					</button>
+				</p>
+			</form>
+			
+		</div>
+		
+		<script type="text/javascript">
+			var vue = new Vue({
+				el : "#app",
+				data : {
+					username : "",
+					passwd : ""
+				},
+				methods:{
+					submit : function(){
+						this.$refs.form.submit();
+					},
+					go : function(){
+						console.log(this.$refs.message);
+					},
+					showPasswd : function(){
+						this.passwd = this.$refs.passwd.value;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

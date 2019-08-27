@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>第一个小demo</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			#picture {
+				width:300px;
+				height: 500px;
+				margin: 0 auto;
+				background-size: 50%;
+			}
+			
+			.playBg{
+				background: url(../image/demo1/bag.png) center no-repeat;
+			}
+			.overBg{
+				background: url(../image/demo1/bag-burst.png) center no-repeat;
+			}
+			
+			#progress{
+				margin: 0 auto;
+				width: 300px;
+				height: 20px;
+				border: #222222 solid 1px;
+			}
+			#progress>div{
+				background: red;
+				height: 20px;
+			}
+			#btn{
+				width: 300px;
+				margin: 20px auto;
+				text-align: center;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			
+			<div id="picture" v-bind:class="{overBg:health<=0 , playBg:health>0}">
+				<!-- 显示图片 -->
+			</div>
+			
+			<div id="progress">
+				<div v-bind:style="{width:health + '%'}">
+					{{health}}%
+				</div>
+			</div>
+			
+			<div id="btn">
+				<button type="button" v-on:click="health-=10" v-show="health > 0">使劲敲</button>
+				<button type="button" v-on:click="health = 100" v-show="health <= 0">重新开始</button>
+			</div>
+			
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript">
+			
+			var vue = new Vue({
+				el : "#app",
+				data : {
+					health : 100,
+				},
+				// methods:{
+				// 	doIt : function () {
+				// 		this.health -= 10;
+				// 	},
+				// 	restart : function(){
+				// 		this.health = 100;
+				// 	}
+				// }
+			})
+	</script>
+	
+</html>

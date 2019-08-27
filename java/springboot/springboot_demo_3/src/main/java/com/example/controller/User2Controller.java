@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,5 +38,15 @@ public class User2Controller {
 		Integer insert = user2Service.insert(user);
 		return MessageData.isOK(insert);
 	}
+	
+	@RequestMapping("/get_user")
+	public Object getUser(){
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("name", "libai");
+		map.put("age", "99");
+		map.put("nickName", "李白");
+		return MessageData.isOK(map);
+	}
+	
 
 }

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>绑定class</title>
+		<script src="../js/vue.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			
+			#app div{
+				height: 100px;
+				line-height: 100px;
+				text-indent: 20px;
+				margin: 20px ;
+			}
+			.green{
+				background: green;
+			}
+			.white{
+				color: white;
+			}
+			.yellow{
+				color: red;
+				background: yellow;
+			}
+			.big_font{
+				font-weight: bold;
+				font-size: 20;
+			}
+			.display{
+				display: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+		<div id="app">
+			<h3>
+				直接绑定class对象
+			</h3>
+			<div v-bind:class="{green:true,white:true}">
+				直接绑定class
+			</div>
+			
+			<h3>
+				在data中定义class显示
+			</h3>
+			<div v-bind:class="{yellow:yellow}">
+				在data中定义class显示
+			</div>
+			
+			<h3>
+				使用computed显示
+			</h3>
+			<div v-bind:class="classes">
+				使用computed显示
+			</div>
+			
+			<h3>
+				动态改变样式
+			</h3>
+			<button type="button" v-on:click="a++">
+				a++ = {{a}}
+			</button>
+			
+			<button type="button" v-on:click="a--">
+				a-- = {{a}}
+			</button>
+			
+			<div v-bind:class="showAClass" ref="show" >
+				a 的值是 : {{a}}
+				<span v-bind:class="{display:a>10}"> ----- 当前a小于10时,显示黄色背景</span>
+				<span v-bind:class="{display:a<=10}"> ----- 当前a大于10时,显示绿色背景</span>
+			</div>
+			
+		</div>
+		
+		
+	</body>
+	
+	<script type="text/javascript">
+		var vue = new Vue({
+			el : "#app",
+			data:{
+				green : true,
+				yellow : true,
+				a : 0
+			},
+			methods : {
+				
+			},
+			computed:{
+				classes : function(){
+					return {
+						yellow:true,
+						big_font:true
+					};
+				},
+				showAClass : function(){
+					if(this.a<=0){
+						// this.$refs.show.className="display";
+						return {
+							display:true
+						}
+					}
+					return {
+						green : this.a > 10,
+						big_font: this.a > 10,
+						yellow : this.a <= 10,
+						white : this.a > 10
+					}
+				},
+			}
+		});
+	</script>
+</html>
