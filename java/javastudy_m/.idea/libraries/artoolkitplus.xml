@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="artoolkitplus">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/artoolkitplus.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ffmpeg-windows-x86.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ffmpeg-windows-x86_64.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ffmpeg.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/flandmark.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/flycapture.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javacpp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javacv.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/leptonica.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libdc1394.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/libfreenect.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/librealsense.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/opencv-windows-x86_64.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/opencv.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -4,8 +4,20 @@
 	<groupId>javastudy_m</groupId>
 	<artifactId>javastudy_m</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-	<dependencies>
+    <dependencies>
 		<!-- <dependency> <groupId>com.github.kunkun26</groupId> <artifactId>jna</artifactId> 
 			<version>4.5.1</version> </dependency> <dependency> <groupId>com.github.kunkun26</groupId> 
 			<artifactId>jna</artifactId> <version>4.5.1</version> <classifier>sources</classifier> 
@@ -100,6 +112,12 @@
 			<version>1.0.13</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.10</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.jxls/jxls -->
 		<!-- <dependency> <groupId>org.jxls</groupId> <artifactId>jxls</artifactId> 
 			<version>2.4.0</version> </dependency> <dependency> <groupId>org.jxls</groupId> 
@@ -123,14 +141,23 @@
 			<artifactId>easyexcel</artifactId>
 			<version>1.1.2-beta5</version>
 		</dependency>
-	
-		<!-- java swing UI-->
-		<!-- <dependency>
-			<groupId>com.weblookandfeel</groupId>
-			<artifactId>weblaf-ui</artifactId>
-			<version>1.2.8</version>
+
+		<!-- httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.10</version>
 		</dependency>
- -->
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>fluent-hc</artifactId>
+			<version>4.5.10</version>
+		</dependency>
+
+		<!-- java swing UI -->
+		<!-- <dependency> <groupId>com.weblookandfeel</groupId> <artifactId>weblaf-ui</artifactId> 
+			<version>1.2.8</version> </dependency> -->
 
 		<!--<dependency> <groupId>com.alibaba</groupId> <artifactId>easyexcel</artifactId> 
 			<version>1.1.1</version> </dependency> -->

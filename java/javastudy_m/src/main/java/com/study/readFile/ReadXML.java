@@ -20,7 +20,6 @@ import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-import org.junit.Test;
 
 /**
  * <PRE>
@@ -42,7 +41,6 @@ public class ReadXML {
 	 * @author xiangning
 	 *
 	 */
-	@Test
 	public void readXML() {
 		SAXReader reader = new SAXReader();
 		String fileName = "/xml/test.xml";
@@ -81,7 +79,6 @@ public class ReadXML {
 	 * @throws IOException
 	 *
 	 */
-	@Test
 	public void writeMapToXML() {
 		XMLWriter writer = null;
 		FileOutputStream out = null;

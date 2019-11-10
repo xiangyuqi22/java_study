@@ -16,7 +16,6 @@ package com.study.readFile;
 import java.io.InputStream;
 import java.util.HashMap;
 
-import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
 
@@ -34,7 +33,6 @@ import org.yaml.snakeyaml.Yaml;
  * @since JDK1.8
  */
 public class ReadYml {
-	@Test
 	public void readToObject() {
 		String fileName = "/yml/test.yml";
 		try {
@@ -56,7 +54,6 @@ public class ReadYml {
 	
 	
 	
-	@Test
 	public void readToMap() {
 		String fileName = "/yml/test.yml";
 		try {
