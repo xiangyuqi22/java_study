@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class CollectorsTest {
 
@@ -74,6 +75,29 @@ public class CollectorsTest {
             System.out.println(key + "生的平均年龄是" + value.stream().collect(Collectors.averagingInt(Student::getAge)).intValue());
         });
 
+        System.out.println("获取各性别学生年龄的平均值2");
+        students.stream().collect(Collectors.groupingBy(
+                Student::getSex,
+                Collectors.averagingInt(Student::getAge)
+        )).forEach((key,value) -> {
+            System.out.println(key + "生的平均年龄是：" + value + "岁！");
+        });
+
+        System.out.println("获取各性别学生年龄的总和1");
+        students.stream().collect(
+                Collectors.groupingBy(Student::getSex,
+                        Collectors.reducing(0, (Student student) -> student.getAge(), Integer::sum)
+                )).forEach((key,value) -> {
+            System.out.println(key + "生的总年龄是：" + value);
+        });
+
+        System.out.println("获取各性别学生年龄的总和2");
+        students.stream().collect(
+                Collectors.groupingBy(Student::getSex,
+                        Collectors.summingInt(Student::getAge)
+                )).forEach((key,value) -> {
+            System.out.println(key + "生的总年龄是：" + value);
+        });
 
 
         //创建一个list对象数据
@@ -101,7 +125,17 @@ public class CollectorsTest {
         String heights = list.stream().map(map -> map.get("height").toString()).collect(Collectors.joining(","));
         System.out.println(heights);
 
+        System.out.println("list.stream().skip(4) -> 删除四个元素");
+        System.out.println(list.stream().skip(4).collect(Collectors.toList()));
 
+
+        System.out.print("判断所有的学生身高是否都高于165 --> ");
+        boolean height1 = list.stream().allMatch(map -> Integer.parseInt(map.get("height").toString()) > 165);
+        System.out.println(height1);
+
+        System.out.print("判断是否有学生的身高矮于或等于165 --> ");
+        boolean height2 = list.stream().anyMatch(map -> Integer.parseInt(map.get("height").toString()) <= 165);
+        System.out.println(height2);
 
     }
 
