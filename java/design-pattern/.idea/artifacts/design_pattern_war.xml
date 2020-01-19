@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="design_pattern:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>design_pattern</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="design_pattern-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="design_pattern:war exploded" />
+    </root>
+  </artifact>
+</component>

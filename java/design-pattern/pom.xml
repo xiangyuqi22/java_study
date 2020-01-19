@@ -3,5 +3,17 @@
   <groupId>com.xiangyuqi</groupId>
   <artifactId>design_pattern</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <packaging>war</packaging>
 </project>

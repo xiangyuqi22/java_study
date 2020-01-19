@@ -30,7 +30,7 @@ public class CollectorsTest {
 
 
         //将所有人的名字进行拼接
-        String nicknames = students.stream().map(student -> student.getNickname()).collect(Collectors.joining(",", "{", "}"));
+        String nicknames = students.stream().map(Student::getNickname).collect(Collectors.joining(",", "{", "}"));
         System.out.println("所有昵称：" + nicknames);
 
         //拼接所有女生的名字

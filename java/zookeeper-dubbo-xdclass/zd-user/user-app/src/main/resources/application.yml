@@ -1,0 +1,72 @@
+server:
+  port: 18081
+druid:
+  allow: #允许登陆的IP地址
+  ip: 127.0.0.1
+  login: #登陆的账户密码
+    user_name: root
+    password: root
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://106.12.146.21:3306/shop?autoReconnect=true&useUnicode=true&characterEncoding=UTF8&useSSL=false
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+  # 连接池的配置信息
+  #  初始化⼤⼩，最⼩等待连接数量，最⼤等待连接数量，最⼤连接数
+    initialSize: 1
+    minIdle: 1
+    maxIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进⾏⼀次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    #  配置⼀个连接在池中最⼩⽣存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的??
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #  配置监控统计拦截的filters，去掉后监控界⾯sql⽆法统计，'wall'⽤于防⽕墙
+    filters: stat,wall
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    #spring.datasource.useGlobalDataSourceStat=true
+
+# dubbo config
+# 应⽤定义了提供⽅应⽤信息，⽤于计算依赖关系；在 dubbo-admin 或 dubbo-monitor 会显示这个
+# 名字，⽅便辨识
+dubbo:
+  application:
+    name: user-app
+    # 使⽤ zookeeper 注册中⼼暴露服务，注意要先开启 zookeeper
+    # 注册中⼼id
+  registry:
+    id: zookeeper-registry
+    # 注册中⼼协议
+    protocol: zookeeper
+    #   注册中⼼地址
+    address: 192.168.104.104:2181
+    # dubbo协议在20880端⼝暴露服务
+    # 协议名称
+  protocol:
+    host: localhost
+    name: dubbo
+    # 协议端⼝
+    port: 20881
+    # 协议访问log
+    accesslog: dubbo-access.log
+    #  重试次数
+  provider:
+    retries: 0
+    # 超时时间
+    timeout: 3000
+    # 注册监控中⼼
+  monitor:
+    protocol: registry
