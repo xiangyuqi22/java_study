@@ -8,6 +8,9 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import com.study.algorithm.sort.bubble.BubbleSort;
 import com.study.algorithm.sort.insertion.InsertionSort;
+import com.study.algorithm.sort.merge.MergeSort;
+import com.study.algorithm.sort.quick.QuickSort;
+import com.study.algorithm.sort.radix.RadixSort;
 import com.study.algorithm.sort.selection.SelectionSort;
 import com.study.algorithm.sort.shell.ShellSort;
 
@@ -39,8 +42,6 @@ public class MainTest {
 				.forks(1)
 				.build();
 		new Runner(options).run();
-		System.out.println("------------");
-		
 	}
 	
 
@@ -48,27 +49,46 @@ public class MainTest {
 	@Benchmark
 	public void bubbleSortTest() {
 		BubbleSort bubbleSort = new BubbleSort();
-		bubbleSort.test1();
+		bubbleSort.bubbleSortEfficiencyTest();
 	}
 	
 	
 	@Benchmark
 	public void selectionSortTest() {
 		SelectionSort selectionSort = new SelectionSort();
-		selectionSort.test1();
+		selectionSort.selectionSortEfficiencyTest();
 	}
 	
 	@Benchmark
 	public void insertionSortTest() {
 		InsertionSort insertionSort = new InsertionSort();
-		insertionSort.test1();
+		insertionSort.insertionSortEfficiencyTest();
 	}
 	
 	@Benchmark
 	public void shellSortTest() {
 		ShellSort shellSort = new ShellSort();
-		shellSort.test1();
+		shellSort.shellSortEfficiencyTest();
 	}
+	
+	@Benchmark
+	public void quickSortTest() {
+		QuickSort quickSort = new QuickSort();
+		quickSort.quickSortEfficiencyTest();
+	}
+	
+	@Benchmark
+	public void mergeSortTest() {
+		MergeSort mergeSort = new MergeSort();
+		mergeSort.mergeSortEfficiencyTest();
+	}
+	
+	@Benchmark
+	public void radixSortTest() {
+		RadixSort radixSort = new RadixSort();
+		radixSort.radixSortEfficiencyTest();
+	}
+	
 	
 	
 

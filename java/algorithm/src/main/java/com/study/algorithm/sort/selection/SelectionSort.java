@@ -48,6 +48,68 @@ public class SelectionSort {
 		System.out.println(Arrays.toString(arrs));
 		System.out.println("------------------------选择排序---结束--------------------------");
 	}
+	
+	
+	
+	
+	
+	@Test
+	public void test2() {
+		System.out.println("------------------------选择排序---开始--------------------------");
+		int[] arrs = new int[] {-2,-10,0,9,11,23,18,38,49,60,9};
+		System.out.println(Arrays.toString(arrs));
+		int index = 0;
+		int count = 0;
+		for (int i = 0; i < arrs.length - 1; i++) {
+			index = i;
+			for (int j = i + 1; j < arrs.length ; j++) {
+				count++;
+				if(arrs[index] > arrs[j]) {
+					index  = j;
+				}
+			}
+			if(index != i) {
+				int temp = arrs[index];
+				arrs[index] = arrs[i];
+				arrs[i] = temp;
+			}
+		}
+		System.out.println("计算次数：" + count + "次");
+		System.out.println(Arrays.toString(arrs));
+		System.out.println("------------------------选择排序---结束--------------------------");
+		
+	}
+	
+	
+	/**
+	 * selectionSortEfficiencyTest:(测试选择排序的速度，8万个数据，大约0.5秒)
+	 * @author xiangning
+	 *
+	 */
+	@Test
+	public void selectionSortEfficiencyTest() {
+		int[] arrs = SortUtils.createArray(80000);
+		int index = 0;
+		int count = 0;
+		for (int i = 0; i < arrs.length - 1; i++) {
+			index = i;
+			for (int j = i + 1; j < arrs.length ; j++) {
+				count++;
+				if(arrs[index] > arrs[j]) {
+					index  = j;
+				}
+			}
+			if(index != i) {
+				int temp = arrs[index];
+				arrs[index] = arrs[i];
+				arrs[i] = temp;
+			}
+		}
+	}
+	
+	
+	
+	
 
 	
 	
