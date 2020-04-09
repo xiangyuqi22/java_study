@@ -210,6 +210,8 @@ class HeroNode{
 		this.right = right;
 	}
 	
+	
+	
 	//Ç°Ğò±éÀú £¬¸¸£¬×ó£¬ÓÒ
 	public void preOrder() {
 		System.out.println(this);
